@@ -39,7 +39,7 @@ All major data centres at Facebook, Google and the ones in China use Hydro as th
 
 "China’s hyperscale data center industry is the second largest in the world, comprising 8% of the global
 market. Researchers estimate that in 2018 China was home to 1.2 million server racks from large and ultralarge scale data centers and 1.5 million server racks from small and mid-scale data centers. China’s data center industry consumed 161 TWh of
-electricity in 2018.35% of the country’s total electricity consumption. Researchers found that electricity consumption from the industry is on track to increase by 66% in the next five years, reaching 267 TWh by 2023, more than Australia’s total 2018 electricity consumption. In a typical data center in China, 80% of electricity is consumed by servers and cooling equipment." [4]
+electricity in 2018.35% of the country’s total electricity consumption. Researchers found that electricity consumption from the industry is on track to increase by 66% in the next five years, reaching 267 TWh by 2023, more than Australia’s total 2018 electricity consumption. In a typical data center in China, 80% of electricity is consumed by servers and cooling equipment." [[4]](https://secured-static.greenpeace.org/eastasia/PageFiles/299371/Powering%20the%20Cloud%20_%20English%20Briefing.pdf)
 
 Renewable Energy and impact of country's dynamics on the environment have been major factors for China over the past decade. Several initiatives have been taken to ensure that China is technology driven in eco friendly ways. But, electricity is one thing that was not paid much attention to. Now, significant efforts have been taken at data centres to ensure that there is cost cutting even in the electricity sector. 
 
@@ -49,7 +49,7 @@ In May 2017, British Airways filed a lawsuit against its data centre supplier CB
 
 "Simon Allen, Membership Secretary at the UK Data Centre Interest Group (DCIG), and one of the key responsible for the DCIRN, said: “The airline industry has an enviable record of continuously improving flight safety by industry-wide sharing of accident and potential accident information,” he said.
 “However, the same is not the case in the data centre industry where it is common practice to cover up failures or potential disasters in a misguided attempt to protect reputations.
-“Root cause investigation findings are normally secret and bound by NDA which has resulted in The Data Centre industry being at a disadvantage in learning from failures.”" [6]
+“Root cause investigation findings are normally secret and bound by NDA which has resulted in The Data Centre industry being at a disadvantage in learning from failures.”" [6](https://data-economy.com/british-airways-dreadful-data-centre-outage-costs-airline-80m/)
 
 Similarly, in August 206, Delta Airlines cancelled 2,000 flights in 3 days. It costed them $150million. The reason was that an electrical component which provided power to the airline's data centre failed and caused the shutdown of the data centre. 
 
