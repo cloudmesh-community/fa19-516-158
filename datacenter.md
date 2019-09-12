@@ -31,7 +31,7 @@ Since the yearly CO2 footprint is being minimized every year, it is hard to esti
 
 All major data centres at Facebook, Google and the ones in China use Hydro as their renewal energy. Electricity is the main source for data centres to power their systems. It is essential to keep this in check at all times. Infact, all major data centres including Microsoft and other IT related companies are moving towards sustainable environment and using energy-efficient sources. Most of these data centres are looking at doing this to ensure they are not harming the environment. They ensure that by doing so, they are well-known and qualified vendors all over the world. In the wake of the changing environment and pollution due to various emissions in daily life, renewal energy is looked at serious by all data centres.
 
-"Mongolia Information Park can make use of free air cooling for up to eight months a year. "Power suppliers are also taking a keen interest in the Hohhot Cloud Computing Base. Beijing Energy Investment Holding said it will build a 2×350 MW and 2×600 MW cogeneration plant with 8.5bn CNY. While Inner Mongolia Electric Power Co said it will invest 1.11bn CNY for building one 500kV substation and two 220kV substations." [[7]](https://www.datacenterdynamics.com/news/inner-mongolia-an-emerging-region-for-cloud/ )
+"Mongolia Information Park can make use of free air cooling for up to eight months a year. Power suppliers are also taking a keen interest in the Hohhot Cloud Computing Base. Beijing Energy Investment Holding said it will build a 2×350 MW and 2×600 MW cogeneration plant with 8.5bn CNY. While Inner Mongolia Electric Power Co said it will invest 1.11bn CNY for building one 500kV substation and two 220kV substations." [[7]](https://www.datacenterdynamics.com/news/inner-mongolia-an-emerging-region-for-cloud/ )
 
 "Hohhot gets 7.7m kW from a mixture of thermal and hydroelectric sources, but is projected to gain another 1.8m kW after work is finished on a new thermal power facility." [[8]](https://community.spiceworks.com/topic/1290566-why-are-so-many-data-centers-in-inner-mongolia) Hohhot generates so much hydroelectric power beacuse yearly average of over a foot of rain adds to its 1.2 billion cubic meter reserve of water.
 
@@ -48,8 +48,10 @@ Renewable Energy and impact of country's dynamics on the environment have been m
 In May 2017, British Airways filed a lawsuit against its data centre supplier CBRE. Around 700 flights were cancelled and 75,000 people were left stranded. It costed them 80 million Euros. This could be a factor that the ticket prices of British Airlines came down in 2018.
 
 "Simon Allen, Membership Secretary at the UK Data Centre Interest Group (DCIG), and one of the key responsible for the DCIRN, said: “The airline industry has an enviable record of continuously improving flight safety by industry-wide sharing of accident and potential accident information,” he said.
+
 “However, the same is not the case in the data centre industry where it is common practice to cover up failures or potential disasters in a misguided attempt to protect reputations.
-“Root cause investigation findings are normally secret and bound by NDA which has resulted in The Data Centre industry being at a disadvantage in learning from failures.”" [6](https://data-economy.com/british-airways-dreadful-data-centre-outage-costs-airline-80m/)
+
+“Root cause investigation findings are normally secret and bound by NDA which has resulted in The Data Centre industry being at a disadvantage in learning from failures.” [6](https://data-economy.com/british-airways-dreadful-data-centre-outage-costs-airline-80m/)
 
 Similarly, in August 206, Delta Airlines cancelled 2,000 flights in 3 days. It costed them $150million. The reason was that an electrical component which provided power to the airline's data centre failed and caused the shutdown of the data centre. 
 
