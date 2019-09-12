@@ -13,9 +13,9 @@ Inner Mongolia Information Park Data Centre is located in Inner Mongolia, China.
 
 It was established in 2016. "In 2016, the region designated the big data and cloud computing industries as new engines for local development, vowing that the regional big data industry's output value will exceed 100 billion yuan (14.5 billion U. S. dollars) in 2020." [[1]](http://www.xinhuanet.com//english/2017-08/05/c_136502192.htm)
 
-The IT Load is 150MW = 150 * 1000 = 150,000kW. The data centre is operated for 24 hours. So, the electricity cost would be 150,000 * 24 = $241,200,000. The yearly cost projected is around $14.5billion+ by 2020. [5]
+The IT Load is 150MW = 150 * 1000 = 150,000kW. The data centre is operated for 24 hours. So, the electricity cost would be 150,000 * 24 = $241,200,000. The yearly cost projected is around $14.5billion+ by 2020. [[5]](https://community.spiceworks.com/topic/1290566-why-are-so-many-data-centers-in-inner-mongolia)
 
-Since the yearly CO2 footprint is being minimized every year, it is hard to estimate the exact figure but it is nearly 6 tons. [2] [3]
+Since the yearly CO2 footprint is being minimized every year, it is hard to estimate the exact figure but it is nearly 6 tons. [[2]](https://data.worldbank.org/indicator/en.atm.co2e.pc) [[3]](https://www.insight.com/content/dam/insight/en_US/pdfs/apc/apc-estimating-data-centers-carbon-footprint.pdf)
 
 
 ## E.Datacenter.3
