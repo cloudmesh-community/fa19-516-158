@@ -8,15 +8,13 @@ The Carbon Emission for "Inner Mongolia Information Park" is 0 because China has
 
 ## E.Datacenter.2.b
 
-Abundant power supply, favorable climatic conditions, availability of skilled staff and preferential policies are major reasons why the data centre is popular. 
-Inner Mongolia Information Park Data Centre is located in Inner Mongolia, China. It is owned by China Telecom. This is the largest data centre in Hohhot, the capital of Inner Mongolia. 
+Abundant power supply, favorable climatic conditions, availability of skilled staff and preferential policies are major reasons why the data centre is popular. Inner Mongolia Information Park Data Centre is located in Inner Mongolia, China. It is owned by China Telecom. This is the largest data centre in Hohhot, the capital of Inner Mongolia. 
 
 It was established in 2016. "In 2016, the region designated the big data and cloud computing industries as new engines for local development, vowing that the regional big data industry's output value will exceed 100 billion yuan (14.5 billion U. S. dollars) in 2020." [[1]](http://www.xinhuanet.com//english/2017-08/05/c_136502192.htm)
 
 The IT Load is 150MW = 150 * 1000 = 150,000kW. The data centre is operated for 24 hours. So, the electricity cost would be 150,000 * 24 = $241,200,000. The yearly cost projected is around $14.5billion+ by 2020. [[5]](https://community.spiceworks.com/topic/1290566-why-are-so-many-data-centers-in-inner-mongolia)
 
 Since the yearly CO2 footprint is being minimized every year, it is hard to estimate the exact figure but it is nearly 6 tons. [[2]](https://data.worldbank.org/indicator/en.atm.co2e.pc) [[3]](https://www.insight.com/content/dam/insight/en_US/pdfs/apc/apc-estimating-data-centers-carbon-footprint.pdf)
-
 
 ## E.Datacenter.3
 
@@ -33,7 +31,9 @@ All major data centres at Facebook, Google and the ones in China use Hydro as th
 
 "Mongolia Information Park can make use of free air cooling for up to eight months a year. Power suppliers are also taking a keen interest in the Hohhot Cloud Computing Base. Beijing Energy Investment Holding said it will build a 2×350 MW and 2×600 MW cogeneration plant with 8.5bn CNY. While Inner Mongolia Electric Power Co said it will invest 1.11bn CNY for building one 500kV substation and two 220kV substations." [[7]](https://www.datacenterdynamics.com/news/inner-mongolia-an-emerging-region-for-cloud/ )
 
-"Hohhot gets 7.7m kW from a mixture of thermal and hydroelectric sources, but is projected to gain another 1.8m kW after work is finished on a new thermal power facility." [[8]](https://community.spiceworks.com/topic/1290566-why-are-so-many-data-centers-in-inner-mongolia) Hohhot generates so much hydroelectric power beacuse yearly average of over a foot of rain adds to its 1.2 billion cubic meter reserve of water.
+"Hohhot gets 7.7m kW from a mixture of thermal and hydroelectric sources, but is projected to gain another 1.8m kW after work is finished on a new thermal power facility." [[8]](https://community.spiceworks.com/topic/1290566-why-are-so-many-data-centers-in-inner-mongolia) 
+
+Hohhot generates so much hydroelectric power beacuse yearly average of over a foot of rain adds to its 1.2 billion cubic meter reserve of water.
 
 ## E.Datacenter.5
 
@@ -51,7 +51,7 @@ In May 2017, British Airways filed a lawsuit against its data centre supplier CB
 
 “However, the same is not the case in the data centre industry where it is common practice to cover up failures or potential disasters in a misguided attempt to protect reputations.
 
-“Root cause investigation findings are normally secret and bound by NDA which has resulted in The Data Centre industry being at a disadvantage in learning from failures.” [6](https://data-economy.com/british-airways-dreadful-data-centre-outage-costs-airline-80m/)
+“Root cause investigation findings are normally secret and bound by NDA which has resulted in The Data Centre industry being at a disadvantage in learning from failures.” [[6]](https://data-economy.com/british-airways-dreadful-data-centre-outage-costs-airline-80m/)
 
 Similarly, in August 206, Delta Airlines cancelled 2,000 flights in 3 days. It costed them $150million. The reason was that an electrical component which provided power to the airline's data centre failed and caused the shutdown of the data centre. 
 
