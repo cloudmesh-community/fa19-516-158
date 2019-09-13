@@ -74,6 +74,6 @@ A piece of electrical component at its Atlanta headquarters failed which led to 
 
 [6] <https://data-economy.com/british-airways-dreadful-data-centre-outage-costs-airline-80m/>
 
-[7] <https://www.datacenterdynamics.com/news/inner-mongolia-an-emerging-region-for-cloud/ >
+[7] <https://www.datacenterdynamics.com/news/inner-mongolia-an-emerging-region-for-cloud/>
 
 [8] <https://community.spiceworks.com/topic/1290566-why-are-so-many-data-centers-in-inner-mongolia>
