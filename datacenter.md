@@ -62,18 +62,18 @@ A piece of electrical component at its Atlanta headquarters failed which led to 
 
 ## References
 
-[1] http://www.xinhuanet.com//english/2017-08/05/c_136502192.htm
+[1] <http://www.xinhuanet.com//english/2017-08/05/c_136502192.htm>
 
-[2] https://data.worldbank.org/indicator/en.atm.co2e.pc
+[2] <https://data.worldbank.org/indicator/en.atm.co2e.pc>
 
-[3] https://www.insight.com/content/dam/insight/en_US/pdfs/apc/apc-estimating-data-centers-carbon-footprint.pdf
+[3] <https://www.insight.com/content/dam/insight/en_US/pdfs/apc/apc-estimating-data-centers-carbon-footprint.pdf>
 
-[4] https://secured-static.greenpeace.org/eastasia/PageFiles/299371/Powering%20the%20Cloud%20_%20English%20Briefing.pdf
+[4] <https://secured-static.greenpeace.org/eastasia/PageFiles/299371/Powering%20the%20Cloud%20_%20English%20Briefing.pdf>
 
-[5] https://community.spiceworks.com/topic/1290566-why-are-so-many-data-centers-in-inner-mongolia
+[5] <https://community.spiceworks.com/topic/1290566-why-are-so-many-data-centers-in-inner-mongolia>
 
-[6] https://data-economy.com/british-airways-dreadful-data-centre-outage-costs-airline-80m/
+[6] <https://data-economy.com/british-airways-dreadful-data-centre-outage-costs-airline-80m/>
 
-[7] https://www.datacenterdynamics.com/news/inner-mongolia-an-emerging-region-for-cloud/ 
+[7] <https://www.datacenterdynamics.com/news/inner-mongolia-an-emerging-region-for-cloud/ >
 
-[8] https://community.spiceworks.com/topic/1290566-why-are-so-many-data-centers-in-inner-mongolia
+[8] <https://community.spiceworks.com/topic/1290566-why-are-so-many-data-centers-in-inner-mongolia>
