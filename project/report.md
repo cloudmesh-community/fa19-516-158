@@ -1,11 +1,10 @@
 # Hadoop and Spark Clusters with Raspberry Pi
 
-Akshay Kowshik and Daivik Uggehalli Dayanand
-
-akowshik@iu.edu and daugge@iu.edu
+Akshay Kowshik, akowshik@iu.edu [fa19-516-162](https://github.com/cloudmesh-community/fa19-516-150) and Daivik Uggehalli Dayanand, daugge@iu.edu [fa19-516-158](https://github.com/cloudmesh-community/fa19-516-162)
 
 ## Abstract
-This project aims at deploying Hadoop and Spark on a Raspberry Pi Cluster
+Deployment of Hadoop and Spark on Raspberry Pi Clusters which involves:
+* Developing a REST service that submits stuff to the cluster remotely.
 
 ## Introduction
 
@@ -22,7 +21,10 @@ This project aims at deploying Hadoop and Spark on a Raspberry Pi Cluster
 * Hadoop
 * Spark
 
+## Workbreakdown
+
 ## Benchmark and Evaluation 
+* Use PyTests leveraging Stopwatch
 
 ## Conclusion
 
