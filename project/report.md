@@ -1,6 +1,7 @@
 # Hadoop and Spark Clusters with Raspberry Pi
 
 Akshay Kowshik, akowshik@iu.edu [fa19-516-162](https://github.com/cloudmesh-community/fa19-516-150) working on Hadoop.
+
 Daivik Uggehalli Dayanand, daugge@iu.edu [fa19-516-158](https://github.com/cloudmesh-community/fa19-516-162) working on Spark.
 
 ## Abstract
