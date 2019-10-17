@@ -6,7 +6,9 @@ Daivik Uggehalli Dayanand, daugge@iu.edu [fa19-516-158](https://github.com/cloud
 
 ## Abstract
 Deployment of Hadoop and Spark on Raspberry Pi Clusters which involves:
-* Developing a REST service that submits stuff to the cluster remotely.
+* Developing a REST service that submits Hadoop/Spark jobs to the cluster remotely.
+* Creating a cluster with as many nodes as we have SD cards for.
+* Switching between Hadoop and Spark.
 
 ## Introduction
 
@@ -25,8 +27,11 @@ Deployment of Hadoop and Spark on Raspberry Pi Clusters which involves:
 
 ## Workbreakdown
 
+## Progress
+
+
 ## Benchmark and Evaluation 
-* Use PyTests leveraging Stopwatch
+* Use PyTest 
 
 ## Conclusion
 
