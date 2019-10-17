@@ -5,6 +5,7 @@ Akshay Kowshik, akowshik@iu.edu, [fa19-516-150](https://github.com/cloudmesh-com
 Daivik Uggehalli Dayanand, daugge@iu.edu, [fa19-516-158](https://github.com/cloudmesh-community/fa19-516-158) working on Spark
 
 ## Abstract
+
 Deployment of Hadoop and Spark on Raspberry Pi Clusters which involves:
 * Installing Hadoop and Spark on Clusters
 * Developing a REST service that submits Hadoop/Spark jobs to the cluster remotely
@@ -18,6 +19,7 @@ Deployment of Hadoop and Spark on Raspberry Pi Clusters which involves:
 ## Architecture
 
 ## Technologies used
+
 * cm-burn
 * cloudmesh-inventory
 * Python
@@ -29,14 +31,18 @@ Deployment of Hadoop and Spark on Raspberry Pi Clusters which involves:
 ## Work Breakdown
 
 ## Progress
+
 * Burning SD Cards using Etcher on Windows
 * Read about battery operated clock for Raspberry Pis, NTP and RTC
 * Setting up the cluster
 
 ## Benchmark and Evaluation 
+
 * Develop a test program to review Hadoop and Spark on Clusters
 * Use PyTest
 
 ## Conclusion
 
 ## References
+
+* <https://raspberrytips.com/raspberry-pi-cluster/>
