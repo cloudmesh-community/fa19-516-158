@@ -45,6 +45,7 @@ Deployment of Hadoop and Spark on Raspberry Pi Clusters which involves:
 
 ## References
 
+* <https://raspberrytips.com/install-raspbian-raspberry-pi/>
 * <https://raspberrytips.com/raspberry-pi-cluster/>
 * <https://dev.to/awwsmm/building-a-raspberry-pi-hadoop-spark-cluster-8b2>
 * <https://dqydj.com/raspberry-pi-hadoop-cluster-apache-spark-yarn/>
