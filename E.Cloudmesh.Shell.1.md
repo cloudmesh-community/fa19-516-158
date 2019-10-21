@@ -21,5 +21,3 @@
 * pip install cloudmesh-cmd5
 * cms
 * cms> help
-
-
