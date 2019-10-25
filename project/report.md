@@ -2,11 +2,11 @@
 
 * Akshay Kowshik, akowshik@iu.edu, [fa19-516-150](https://github.com/cloudmesh-community/fa19-516-150) working on Hadoop
 
-Insights: <https://github.com/cloudmesh-community/fa19-516-150/graphs/contributors>
+  Insights: <https://github.com/cloudmesh-community/fa19-516-150/graphs/contributors>
 
 * Daivik Uggehalli Dayanand, daugge@iu.edu, [fa19-516-158](https://github.com/cloudmesh-community/fa19-516-158) working on Spark
 
-Insights: <https://github.com/cloudmesh-community/fa19-516-158/graphs/contributors>
+  Insights: <https://github.com/cloudmesh-community/fa19-516-158/graphs/contributors>
 
 ## Abstract
 
