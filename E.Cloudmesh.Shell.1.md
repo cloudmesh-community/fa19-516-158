@@ -13,7 +13,7 @@
 * pip install cloudmesh-installer
 * cloudmesh-installer bundles
 * cloudmesh-installer git clone cms
-* cloudmesh installer install cms -e
+* cloudmesh-installer install cms -e
 * cms help
 
 ## Installing cmd5
