@@ -1,22 +1,17 @@
 # Hadoop and Spark Clusters With Raspberry Pi
 
-* Akshay Kowshik (akowshik@iu.edu) [fa19-516-150](https://github.com/cloudmesh-community/fa19-516-150) working on Hadoop
-
-  Insights: <https://github.com/cloudmesh-community/fa19-516-150/graphs/contributors>
-
-* Daivik Uggehalli Dayanand (daugge@iu.edu) [fa19-516-158](https://github.com/cloudmesh-community/fa19-516-158) working on Spark
-
-  Insights: <https://github.com/cloudmesh-community/fa19-516-158/graphs/contributors>
-
 ## Abstract
 
 Deployment of Hadoop and Spark on Raspberry Pi Clusters which involves:
-* Installing Hadoop and Spark on Clusters
-* Developing a REST service that submits Hadoop/Spark jobs to the cluster remotely
+* Using CM-BURN command to burn multiple sd cards at once
+* Deploying Hadoop and Spark on Raspeberrry PI Clusters
 * Creating a cluster with as many nodes as we have SD cards for
-* Switching across clusters between Hadoop and Spark using a REST Service
 
 ## Introduction
+Majority of the data in today's world has been stored in HDFS. HDFS stands for Hadoop Distributed Storage System.The Raspberry Pi provides to the community a cheap platform with the ability to expose Linux and other operating systems to the masses. Du to its cost point it is easy to buy a PI and experiment with it. As such this platform has been ideal to lower the entry barrier to advanced computing from the university level to highschool and middle school and even elementary school. However the PI has also been used by universities and even national labs. Due to its availability and is convenient accessibility is has become a staple of our educational pipeline.Due to its price point the PI can also be used to build cheap clusters putting forward a hardware platform ideal for experimenting with issues such as networking and cluster management as educational tool. Many such efforts exist to use a PI as a cluster environment.
+
+  So it would be a good idea if we could somehow turn such platform more powerful by deploying latest techologies such as hadoop and spark on it. When i am taking about raspeberry PI it of course means we are using multiple clusters together. One node can act as the master node and other nodes can act as slaves where master might be able to contol the slave.
+
 
 ## Related Work
 
@@ -27,7 +22,6 @@ Deployment of Hadoop and Spark on Raspberry Pi Clusters which involves:
 * cm-burn
 * cloudmesh-inventory
 * Python
-* REST
 * HDFS
 * Hadoop
 * Spark
@@ -38,7 +32,7 @@ Deployment of Hadoop and Spark on Raspberry Pi Clusters which involves:
 
 * Burning SD Cards using Etcher on Windows
 * Read about battery operated clock for Raspberry Pis, NTP and RTC
-* Setting up the cluster
+* Sett
 
 ## Benchmark and Evaluation 
 
