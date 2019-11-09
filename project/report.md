@@ -3,15 +3,15 @@
 ## Abstract
 
 Deployment of Hadoop and Spark on Raspberry Pi Clusters which involves:
-* Using CM-BURN command to burn multiple sd cards at once
-* Deploying Hadoop and Spark on Raspeberrry PI Clusters
+* Using CM-BURN command to burn multiple SD cards at once
+* Deploying Hadoop and Spark on Raspberry PI Clusters
 * Creating a cluster with as many nodes as we have SD cards for
 
 ## Introduction
-Majority of the data in today's world has been stored in HDFS. HDFS stands for Hadoop Distributed Storage System.The Raspberry Pi provides to the community a cheap platform with the ability to expose Linux and other operating systems to the masses. Du to its cost point it is easy to buy a PI and experiment with it. As such this platform has been ideal to lower the entry barrier to advanced computing from the university level to highschool and middle school and even elementary school. However the PI has also been used by universities and even national labs. Due to its availability and is convenient accessibility is has become a staple of our educational pipeline.Due to its price point the PI can also be used to build cheap clusters putting forward a hardware platform ideal for experimenting with issues such as networking and cluster management as educational tool. Many such efforts exist to use a PI as a cluster environment.
 
-  So it would be a good idea if we could somehow turn such platform more powerful by deploying latest techologies such as hadoop and spark on it. When i am taking about raspeberry PI it of course means we are using multiple clusters together. One node can act as the master node and other nodes can act as slaves where master might be able to contol the slave.
+Majority of the data in today's world has been stored in HDFS. HDFS stands for Hadoop Distributed Storage System. The Raspberry Pi provides to the community a cheap platform with the ability to expose Linux and other operating systems to the masses. Due to its cost point, it is easy to buy a PI and experiment with it. As such this platform has been ideal to lower the entry barrier to advanced computing from the university level to highschool, middle school and even elementary school. However, the PI has also been used by universities and even national labs. Due to its availability and its convenient accessibility, it has become a staple of our educational pipeline. Due to its price point the PI can also be used to build cheap clusters putting forward a hardware platform ideal for experimenting with issues such as networking and cluster management as an educational tool. Many such efforts exist to use a PI as a cluster environment.
 
+So it would be a good idea if we could somehow turn such a platform more powerful by deploying latest technologies such as Hadoop and Spark on it. Multi cluster Raspberry Pi, where one node can act as the master node and other nodes act as slaves and the master might be able to control the slaves.
 
 ## Related Work
 
