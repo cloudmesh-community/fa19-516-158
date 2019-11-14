@@ -32,12 +32,11 @@ So it would be a good idea if we could somehow turn such a platform more powerfu
 
 * Burning SD Cards using Etcher on Windows
 * Read about battery operated clock for Raspberry Pis, NTP and RTC
-* Sett
 
 ## Benchmark and Evaluation 
 
 * Develop a test program to review Hadoop and Spark on Clusters
-* Use PyTest
+* Series and parallel flashing of SD cards 
 
 ## Conclusion
 
