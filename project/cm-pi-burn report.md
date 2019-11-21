@@ -20,11 +20,12 @@ The operating system used for the Raspberry Pi is Raspbian, a Debian-based opera
 ```
 This gets the latest image and burns images sequentially on the SD card.
 
+## Setting static IP for each Pi on Network Switch
+
 * To enable user-defined, static IP addresses, edit the file /etc/dhcpcd.conf on each Pi and uncomment/edit the lines:
 
 ```
 interface eth0
 static ip_address=192.168.0.10X/24
-
 ```
-
+where, X denotes the number to be assigned for every Pi.
