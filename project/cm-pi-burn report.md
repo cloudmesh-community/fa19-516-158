@@ -20,7 +20,7 @@ The operating system used for the Raspberry Pi is Raspbian, a Debian-based opera
 ```
 This gets the latest image and burns images sequentially on the SD card.
 
-## Setting static IP for each Pi on Network Switch
+# Setting static IP for each Pi on Network Switch
 
 To enable user-defined, static IP addresses, edit the file /etc/dhcpcd.conf on each Pi and uncomment/edit the lines:
 
@@ -30,7 +30,7 @@ static ip_address=192.168.0.10X/24
 ```
 where, X denotes the number to be assigned for every Pi. After this change has been made on a particular Pi, reboot the machine. Once this is done for all Pis in the network, they should all be able to ping each other at those addresses.
 
-## Set password, Enable SSH and Reboot Pi
+# Set password, Enable SSH and Reboot Pi
 
 ```
 sudo su
@@ -42,9 +42,9 @@ sudo systemctl start ssh
 sudo reboot
 ```
 
-## Single Node(Master) set up
+# Single Node(Master) set up Hadoop and Spark
 
-# Bash Script of Master Node
+## Bash Script of Master Node
 
 ```
 # To get hostname of other pis in the network
