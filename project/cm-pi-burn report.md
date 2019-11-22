@@ -100,8 +100,8 @@ export SPARK_HOME=/opt/spark
 export PATH=$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$SPARK_HOME/bin:$PATH
 export HADOOP_HOME_WARN_SUPRESS=1
 ```
-
-The following files need to be changed as follows:
+## HDFS
+To get the Hadoop Distributed File System (HDFS) up and running, we need to modify some configuration files. All of these files are within /opt/hadoop/etc/hadoop.
 
 * core-site.xml
 
