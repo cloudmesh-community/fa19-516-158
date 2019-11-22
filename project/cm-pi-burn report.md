@@ -41,6 +41,20 @@ sudo systemctl enable ssh
 sudo systemctl start ssh
 sudo reboot
 ```
+# Hostname
+
+Initially, all the Pis are known as raspberrypi, and have a single user, pi:
+
+```
+$ hostname
+raspberrypi
+
+$whoami
+pi
+```
+
+This is very confusing if we're constantly moving back and forth between the different Pis on the network. To simplify this, assign each Pi a hostname based on its position in the network switch. Pi #1 will be known as pi1, Pi #2 as pi2, and so on.
+In order to accomplish this, we need to edit 2 files /etc/hosts and /etc/hostname.
 
 # Single Node(Master) set up Hadoop and Spark
 
