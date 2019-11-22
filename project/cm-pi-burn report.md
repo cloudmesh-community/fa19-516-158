@@ -183,3 +183,32 @@ To get the Hadoop Distributed File System (HDFS) up and running, modify the foll
 
 </configuration>
 ```
+
+## Format HDFS
+
+```
+hdfs namenode -format -force
+```
+
+## Boot HDFS
+
+```
+start dfs.sh
+start yarn.sh
+```
+
+## Test HDFS
+
+Check HDFS is working by creating a temporary directory
+
+```
+hadoop fs -mkdir /tmp
+hadoop fs -ls /
+jps
+```
+
+## Test Hadoop and Spark working together
+
+```
+hadoop fs -put $SPARK_HOME/README.md /
+```
