@@ -115,6 +115,14 @@ wget "https://archive.apache.org/dist/spark/spark-2.4.3/spark-2.4.3-bin-hadoop2.
 tar -xzf spark-2.4.3-bin-hadoop2.7.tgz
 sudo mv ~/spark-2.4.3-bin-hadoop2.7 /opt/spark
 ```
+
+## Versions of Hadoop and Spark
+
+```
+cd && hadoop version | grep Hadoop
+cd && spark-shell --version
+```
+
 ## HDFS
 
 To get the Hadoop Distributed File System (HDFS) up and running, modify the following configuration files which are under /opt/hadoop/etc/hadoop.
