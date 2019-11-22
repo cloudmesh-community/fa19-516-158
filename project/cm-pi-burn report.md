@@ -100,8 +100,18 @@ export SPARK_HOME=/opt/spark
 export PATH=$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$SPARK_HOME/bin:$PATH
 export HADOOP_HOME_WARN_SUPRESS=1
 ```
+
+## Hadoop installation
+
+```
+* wget "https://archive.apache.org/dist/hadoop/common/hadoop-3.2.0/hadoop-3.2.0.tar.gz"
+* tar -xzf hadoop-3.2.0.tar.gz
+* sudo mv ~/hadoop-3.2.0 /opt/hadoop
+```
+
 ## HDFS
-To get the Hadoop Distributed File System (HDFS) up and running, we need to modify some configuration files. All of these files are within /opt/hadoop/etc/hadoop.
+
+To get the Hadoop Distributed File System (HDFS) up and running, modify the following configuration files which are under /opt/hadoop/etc/hadoop.
 
 * core-site.xml
 
