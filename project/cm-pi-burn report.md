@@ -42,4 +42,71 @@ sudo systemctl start ssh
 sudo reboot
 ```
 
+## Single Node(Master) set up
 
+The following files need to be changed as follows:
+
+* core-site.xml
+
+```
+<configuration>
+        <property>
+                <name>fs.defaultFS</name>
+                <value>hdfs://pi1:9000</value>
+        </property>
+</configuration>
+```
+
+* hdfs-site.xml
+
+```
+<configuration>
+
+        <property>
+                <name>dfs.datanode.data.dir</name>
+                <value>file:///opt/hadoop_tmp/hdfs/datanode</value>
+        </property>
+
+        <property>
+                <name>dfs.namenode.name.dir</name>
+                <value>file:///opt/hadoop_tmp/hdfs/namenode</value>
+        </property>
+
+        <property>
+                <name>dfs.replication</name>
+                <value>1</value>
+        </property>
+
+</configuration>
+```
+
+* mapred-site.xml
+
+```
+<configuration>
+        <property>
+                <name>mapreduce.framework.name</name>
+                <value>yarn</value>
+        </property>
+</configuration>
+```
+
+* yarn-site.xml
+
+```
+<configuration>
+
+<!-- Site specific YARN configuration properties -->
+
+        <property> 
+                <name>yarn.nodemanager.aux-services</name>
+                <value>mapreduce_shuffle</value>
+        </property>
+
+        <property>
+                <name>yarn.nodemanager.auxservices.mapreduce.shuffle.class</name>
+                <value>org.apache.hadoop.mapred.ShuffleHandler</value>
+        </property>
+
+</configuration>
+```
