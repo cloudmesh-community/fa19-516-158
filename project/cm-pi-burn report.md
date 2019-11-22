@@ -104,11 +104,17 @@ export HADOOP_HOME_WARN_SUPRESS=1
 ## Hadoop installation
 
 ```
-* wget "https://archive.apache.org/dist/hadoop/common/hadoop-3.2.0/hadoop-3.2.0.tar.gz"
-* tar -xzf hadoop-3.2.0.tar.gz
-* sudo mv ~/hadoop-3.2.0 /opt/hadoop
+wget "https://archive.apache.org/dist/hadoop/common/hadoop-3.2.0/hadoop-3.2.0.tar.gz"
+tar -xzf hadoop-3.2.0.tar.gz
+sudo mv ~/hadoop-3.2.0 /opt/hadoop
 ```
+## Spark installation
 
+```
+wget "https://archive.apache.org/dist/spark/spark-2.4.3/spark-2.4.3-bin-hadoop2.7.tgz"
+tar -xzf spark-2.4.3-bin-hadoop2.7.tgz
+sudo mv ~/spark-2.4.3-bin-hadoop2.7 /opt/spark
+```
 ## HDFS
 
 To get the Hadoop Distributed File System (HDFS) up and running, modify the following configuration files which are under /opt/hadoop/etc/hadoop.
