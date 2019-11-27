@@ -22,6 +22,7 @@ This gets the latest image and burns images sequentially on the SD card.
 
 # Setting static IP for each Pi on Network Switch
 
+To facilitate easy networking of the Pis, we are  going to set static IP addresses for each Pi on the network switch. we will number the Pis 1-8 (inclusive) according to their positions on the network switch and in the carrying case.
 To enable user-defined, static IP addresses, edit the file /etc/dhcpcd.conf on each Pi and uncomment/edit the lines:
 
 ```
@@ -32,18 +33,30 @@ where, X denotes the number to be assigned for every Pi. After this change has b
 
 # Set password, Enable SSH and Reboot Pi
 
+To enable ssh on each Pi, we need to follow these instructions
+
+1) Launch Raspberry Pi Configuration from the Preferences menu
+2) Navigate to the Interfaces tab
+3) Select Enabled next to SSH
+4) Click OK
+
+Alternatively, raspi-config can be used in the terminal:
+
+1) Enter sudo raspi-config in a terminal window
+2) Select Interfacing Options
+3) Navigate to and select SSH
+4) Choose Yes
+5) Select Ok
+6) Choose Finish
+
+Alternatively we can also use the following commands:
 ```
-sudo su
-passwd
-sudo passwd pi
-sudo raspi-config
 sudo systemctl enable ssh
 sudo systemctl start ssh
-sudo reboot
 ```
 # Hostname
 
-Initially, all the Pis are known as raspberrypi, and have a single user, pi:
+Initially, all the Pis are known as raspberrypi, and have a single user, pi: Two files must be edited: /etc/hosts and /etc/hostname.  In the /etc/hostname we change the hostnames to pi1,pi2,pi3 and so on
 
 ```
 $ hostname
@@ -54,7 +67,12 @@ pi
 ```
 
 This is very confusing if we're constantly moving back and forth between the different Pis on the network. To simplify this, assign each Pi a hostname based on its position in the network switch. Pi #1 will be known as pi1, Pi #2 as pi2, and so on.
-In order to accomplish this, we need to edit 2 files /etc/hosts and /etc/hostname.
+In order to accomplish this, we need to edit 2 files /etc/hosts and /etc/hostname. In /etc/hosts we add the IP''s at the end of the file like, for eg:
+
+'''
+192.168.0.101 pi1
+192.168.0.102 pi2
+'''
 
 # Single Node(Master) set up Hadoop and Spark
 
