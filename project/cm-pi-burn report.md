@@ -75,7 +75,7 @@ In order to accomplish this, we need to edit 2 files /etc/hosts and /etc/hostnam
 192.168.0.102 pi2
 ```
 
-#Simplifying SSH
+# Simplifying SSH
 
 To connect from one Pi to another, having followed only the above instructions, would require the following series of commands
 
