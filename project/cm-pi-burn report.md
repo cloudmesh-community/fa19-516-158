@@ -66,13 +66,55 @@ $whoami
 pi
 ```
 
+
 This is very confusing if we're constantly moving back and forth between the different Pis on the network. To simplify this, assign each Pi a hostname based on its position in the network switch. Pi #1 will be known as pi1, Pi #2 as pi2, and so on.
 In order to accomplish this, we need to edit 2 files /etc/hosts and /etc/hostname. In /etc/hosts we add the IP''s at the end of the file like, for eg:
 
-'''
+```
 192.168.0.101 pi1
 192.168.0.102 pi2
-'''
+```
+
+#Simplifying SSH
+
+To connect from one Pi to another, having followed only the above instructions, would require the following series of commands
+
+```
+$ ssh pi@192.168.0.10X
+pi@192.168.0.10X's password: <enter password – 'raspberry' default>
+```
+
+Instead of the above approach we can use SSH aliases which facilitates easier and faster access
+
+For this we have to edit the ~/.ssh/config file
+
+```
+$ ssh piX
+pi@192.168.0.10X's password: <enter password>
+```
+
+This can be further simplified using the public/private key pairs
+
+```
+ssh-keygen –t ed25519
+```
+This will generate a public / private key pair within the directory ~/.ssh/ which can be used to securely ssh without entering a password. One of these files will be called id_ed25519, this is the private key. The other, id_ed25519.pub is the public key.
+The public key is used to communicate with the other Pis, and the private key never leaves its host machine and should never be moved or copied to any other device.
+
+To overcome this problem each public key needs to be concatenated to the ~/.ssh/authorized_keys file on every other pi. 
+
+On all other Pis run the following command:
+
+```
+$ cat ~/.ssh/id_ed25519.pub | ssh pi@192.168.0.101 'cat >> .ssh/authorized_keys'
+```
+
+This concatenates Pi #2's public key file to Pi #1's list of authorized keys, giving Pi #2 permission to ssh into Pi #1 without a password. We should also do this for Pi #1, so that when we copy the completed authorized_keys file to the other Pis, they all have permission to ssh into Pi #1, as well(assuming that Pi1 acts as the  master node).
+
+```
+$ cat .ssh/id_ed25519.pub >> .ssh/authorized_keys
+```
+
 
 # Single Node(Master) set up Hadoop and Spark
 
