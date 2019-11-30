@@ -86,7 +86,16 @@ pi@192.168.0.10X's password: <enter password – 'raspberry' default>
 
 Instead of the above approach we can use SSH aliases which facilitates easier and faster access
 
-For this we have to edit the ~/.ssh/config file
+For this we have to edit the ~/.ssh/config file and add the following commands
+
+```
+Host piX
+User pi
+Hostname 192.168.0.10X
+```
+X needs to be replaced with the respective PI number
+
+The output screen is depicted as follows:
 
 ```
 $ ssh piX
