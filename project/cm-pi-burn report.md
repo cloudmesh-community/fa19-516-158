@@ -133,6 +133,8 @@ $ scp ~/.ssh/config piX:~/.ssh/config
 
 ## Bash Script of Master Node
 
+All of the folowing needs to be edited on ~/.bashrc file
+
 ```
 # To get hostname of other pis in the network
 function otherpis {
