@@ -115,6 +115,19 @@ This concatenates Pi #2's public key file to Pi #1's list of authorized keys, gi
 $ cat .ssh/id_ed25519.pub >> .ssh/authorized_keys
 ```
 
+Once this is done, as well as the previous section, ssh-ing is as easy as:
+
+```
+
+$ssh pi1
+
+```
+To replicate the passwordless ssh across all Pis, simply copy the two files mentioned above from Pi #1 to each other Pi using scp
+
+```
+$ scp ~/.ssh/authorized_keys piX:~/.ssh/authorized_keys
+$ scp ~/.ssh/config piX:~/.ssh/config 
+```
 
 # Single Node(Master) set up Hadoop and Spark
 
