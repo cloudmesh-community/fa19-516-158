@@ -227,7 +227,7 @@ After the above step change the permissions on the directory using :
 $ sudo chown pi:pi -R /opt/hadoop
 ```
 
-You can also verify if hadoop has been insatlled correctly by checking the version
+You can also verify if hadoop has been installed correctly by checking the version
 
 ```
 $ cd && hadoop version | grep Hadoop
@@ -239,13 +239,31 @@ The output will be as follows
 Hadoop 3.2.0
 ```
 
-
 ## Spark installation
 
 ```
 wget "https://archive.apache.org/dist/spark/spark-2.4.3/spark-2.4.3-bin-hadoop2.7.tgz"
 tar -xzf spark-2.4.3-bin-hadoop2.7.tgz
 sudo mv ~/spark-2.4.3-bin-hadoop2.7 /opt/spark
+```
+
+We can use clustercp function to copy the same file across all the cluster so that hadoop is installed across all the nodes
+
+After the above step change the permissions on the directory using :
+```
+$ sudo chown pi:pi -R /opt/spark
+```
+
+You can also verify if hadoop has been installed correctly by checking the version
+
+```
+$ cd && spark version | grep spark
+
+```
+The output will be as follows
+
+```
+... version 2.4.3 ... Using Scala version 2.11.12 ...
 ```
 
 ## Versions of Hadoop and Spark
