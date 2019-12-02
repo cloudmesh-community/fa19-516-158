@@ -429,10 +429,10 @@ hadoop fs -put $SPARK_HOME/README.md /
 * <https://raspberrytips.com/install-raspbian-raspberry-pi/>
 * <https://raspberrytips.com/raspberry-pi-cluster/>
 * https://www.raspberrypi.org/documentation/remote-access/ip-address.md
-* <https://dev.to/awwsmm/building-a-raspberry-pi-hadoop-spark-cluster-8b2>
 * <https://dqydj.com/raspberry-pi-hadoop-cluster-apache-spark-yarn/>
 * <https://www.mocomakers.com/building-a-raspberry-pi-cluster-with-apache-spark/>
 * <https://tekmarathon.com/2017/02/16/hadoop-and-spark-installation-on-raspberry-pi-3-cluster-part-4/amp/>
 * <https://medium.com/@glmdev/building-a-raspberry-pi-cluster-784f0df9afbd>
 * <https://dev.to/awwsmm/building-a-raspberry-pi-hadoop-spark-cluster-8b2>
 * <https://www.linode.com/docs/databases/hadoop/how-to-install-and-set-up-hadoop-cluster/>
+* <https://www.linode.com/docs/databases/hadoop/install-configure-run-spark-on-top-of-hadoop-yarn-cluster/>
