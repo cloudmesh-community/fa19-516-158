@@ -24,7 +24,7 @@ So it would be a good idea if we could somehow turn such a platform more powerfu
 ## Implementation
 
 * Multiple Hosts using cloudmesh parameter: cms sys command generate hadoop
-<https://github.com/cloudmesh-community/fa19-516-158/tree/master/project>
+<https://github.com/cloudmesh-community/fa19-516-158/blob/master/project/cloudmesh-hadoop/cloudmesh/hadoop/api/manager.py>
 
 The operating system used for the Raspberry Pi is Raspbian, a Debian-based operating system developed and maintained by the Raspberry Pi Foundation. It is the Foundation's official supported OS.
 
