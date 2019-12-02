@@ -259,8 +259,7 @@ cd && spark-shell --version
 
 To get the Hadoop Distributed File System (HDFS) up and running, modify the following configuration files which are under /opt/hadoop/etc/hadoop.
 
-* core-site.xml
-
+1. core-site.xml
 ```
 <configuration>
 
@@ -274,8 +273,7 @@ To get the Hadoop Distributed File System (HDFS) up and running, modify the foll
 </configuration>
 ```
 
-* hdfs-site.xml
-
+2. hdfs-site.xml
 ```
 <configuration>
 
@@ -297,8 +295,7 @@ To get the Hadoop Distributed File System (HDFS) up and running, modify the foll
 </configuration>
 ```
 
-* mapred-site.xml
-
+3. mapred-site.xml
 ```
 <configuration>
 
@@ -330,8 +327,7 @@ To get the Hadoop Distributed File System (HDFS) up and running, modify the foll
 </configuration> 
 ```
 
-* yarn-site.xml
-
+4. yarn-site.xml
 ```
 <configuration>
 
@@ -425,8 +421,9 @@ hadoop fs -put $SPARK_HOME/README.md /
 
 ## Benchmark and Evaluation 
 
-* Developed a test program(word count) to review Hadoop and Spark on Clusters
-* 
+* Developed a test program (word count) to review Hadoop and Spark on Pi
+* Time taken to burn SD card manually = 15 minutes
+* Time taken to burn SD card using [cm-pi-burn] (<https://github.com/cloudmesh/cm-burn/blob/master/cm-pi-burn.py>)
 
 ## References
 
