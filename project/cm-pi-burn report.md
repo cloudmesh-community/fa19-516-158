@@ -192,6 +192,26 @@ wget "https://archive.apache.org/dist/hadoop/common/hadoop-3.2.0/hadoop-3.2.0.ta
 tar -xzf hadoop-3.2.0.tar.gz
 sudo mv ~/hadoop-3.2.0 /opt/hadoop
 ```
+We can use clustercp function to copy the same file across all the cluster so that hadoop is installed across all the nodes
+
+After the above step change the permissions on the directory using :
+```
+$ sudo chown pi:pi -R /opt/hadoop
+```
+
+You can also verify if hadoop has been insatlled correctly by checking the version
+
+```
+$ cd && hadoop version | grep Hadoop
+
+```
+The output will be as follows
+
+```
+Hadoop 3.2.0
+```
+
+
 ## Spark installation
 
 ```
@@ -215,10 +235,14 @@ To get the Hadoop Distributed File System (HDFS) up and running, modify the foll
 
 ```
 <configuration>
-        <property>
-                <name>fs.defaultFS</name>
-                <value>hdfs://pi1:9000</value>
-        </property>
+
+  <property>
+  
+    <name>fs.default.name</name>
+    <value>hdfs://pi1:9000</value>
+    
+  </property>
+  
 </configuration>
 ```
 
@@ -239,7 +263,7 @@ To get the Hadoop Distributed File System (HDFS) up and running, modify the foll
 
         <property>
                 <name>dfs.replication</name>
-                <value>1</value>
+                <value>4</value>
         </property>
 
 </configuration>
@@ -249,11 +273,33 @@ To get the Hadoop Distributed File System (HDFS) up and running, modify the foll
 
 ```
 <configuration>
+
         <property>
                 <name>mapreduce.framework.name</name>
                 <value>yarn</value>
         </property>
-</configuration>
+        
+        <property>
+        
+                <name>yarn.app.mapreduce.am.resource.mb</name>
+                <value>256</value>
+        </property>
+        
+        <property>
+        
+                <name>mapreduce.map.memory.mb</name>
+                
+                <value>128</value>
+        </property>
+        
+        <property>
+        
+                <name>mapreduce.reduce.memory.mb</name>
+                
+                <value>128</value>
+        </property>
+        
+</configuration> 
 ```
 
 * yarn-site.xml
@@ -261,18 +307,62 @@ To get the Hadoop Distributed File System (HDFS) up and running, modify the foll
 ```
 <configuration>
 
-<!-- Site specific YARN configuration properties -->
-
-        <property> 
-                <name>yarn.nodemanager.aux-services</name>
-                <value>mapreduce_shuffle</value>
-        </property>
-
-        <property>
-                <name>yarn.nodemanager.auxservices.mapreduce.shuffle.class</name>
-                <value>org.apache.hadoop.mapred.ShuffleHandler</value>
-        </property>
-
+  <property>
+  
+    <name>yarn.acl.enable</name>
+    <value>0</value>
+    
+  </property>
+  
+  <property>
+  
+    <name>yarn.resourcemanager.hostname</name>
+    <value>pi1</value>
+    
+  </property>
+  
+  <property>
+  
+    <name>yarn.nodemanager.aux-services</name>
+    <value>mapreduce_shuffle</value>
+    
+  </property>
+  
+  <property>
+  
+    <name>yarn.nodemanager.auxservices.mapreduce.shuffle.class</name>  
+    <value>org.apache.hadoop.mapred.ShuffleHandler</value>
+    
+  </property>
+ 
+  <property>
+  
+    <name>yarn.nodemanager.resource.memory-mb</name>
+    <value>900</value>
+    
+  </property>
+  
+  <property>
+  
+    <name>yarn.scheduler.maximum-allocation-mb</name>
+    <value>900</value>
+    
+  </property>
+  
+  <property>
+  
+    <name>yarn.scheduler.minimum-allocation-mb</name>
+    <value>64</value>
+    
+  </property>
+  
+  <property>
+  
+    <name>yarn.nodemanager.vmem-check-enabled</name>
+    <value>false</value>
+    
+  </property>
+  
 </configuration>
 ```
 
