@@ -13,6 +13,18 @@ Majority of the data in today's world has been stored in HDFS. HDFS stands for H
 
 So it would be a good idea if we could somehow turn such a platform more powerful by deploying latest technologies such as Hadoop and Spark on it. Multi cluster Raspberry Pi, where one node can act as the master node and other nodes act as slaves and the master might be able to control the slaves.
 
+## Architecture
+
+* A master node maintains knowledge about the distributed file system and schedules resources allocation. It will host two daemons:
+
+1. The NameNode manages the distributed file system and knows where stored data blocks inside the cluster are.
+2. The ResourceManager manages the YARN jobs and takes care of scheduling and executing processes on worker nodes.
+
+* Worker nodes store the actual data and provide processing power to run the jobs and will host two daemons:
+
+1. The DataNode manages the physical data stored on the node; it’s named, NameNode.
+2. The NodeManager manages execution of tasks on the node.
+
 ## Technologies used
 
 * cm-burn
@@ -213,6 +225,16 @@ export PATH=$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$SPARK_HOME/bin:$P
 export HADOOP_HOME_WARN_SUPRESS=1
 ```
 
+## Set JAVA_HOME
+
+* To find Java path, 
+```
+update-alternatives --display java
+```
+* Remove /bin/java - On Debian, the link is /usr/lib/jvm/java-11-openjdk-armhf/bin/java, so JAVA_HOME should be /usr/lib/jvm/java-11-openjdk-armhf.
+
+* Update the hadoop-env.sh under ~/hadoop/etc/hadoop as: export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-armhf
+
 ## Hadoop installation
 
 ```
@@ -277,7 +299,7 @@ cd && spark-shell --version
 
 To get the Hadoop Distributed File System (HDFS) up and running, modify the following configuration files which are under /opt/hadoop/etc/hadoop.
 
-1. core-site.xml
+1. Update core-site.xml file to set the NameNode location to Master on port 9000:
 ```
 <configuration>
 
@@ -291,7 +313,7 @@ To get the Hadoop Distributed File System (HDFS) up and running, modify the foll
 </configuration>
 ```
 
-2. hdfs-site.xml
+2. To set path for HFDS, edit hdfs-site.xml. dfs.replication, indicates how many times data is replicated in the cluster. Set 4 to have all the data duplicated four nodes. Don’t enter a value higher than the actual number of worker nodes.
 ```
 <configuration>
 
@@ -313,7 +335,7 @@ To get the Hadoop Distributed File System (HDFS) up and running, modify the foll
 </configuration>
 ```
 
-3. mapred-site.xml
+3. To set Yarn as Job Scheduler, edit mapred-site.xml, setting YARN as the default framework for MapReduce operations.
 ```
 <configuration>
 
@@ -345,7 +367,7 @@ To get the Hadoop Distributed File System (HDFS) up and running, modify the foll
 </configuration> 
 ```
 
-4. yarn-site.xml
+4. Edit yarn-site.xml, which contains the configuration options for YARN.
 ```
 <configuration>
 
