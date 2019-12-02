@@ -45,7 +45,7 @@ The operating system used for the Raspberry Pi is Raspbian, a Debian-based opera
 ```
 This gets the latest image and burns images sequentially on the SD card.
 
-# Setting static IP for each Pi on Network Switch
+## Setting static IP for each Pi on Network Switch
 
 To facilitate easy networking of the Pis, we are  going to set static IP addresses for each Pi on the network switch. we will number the Pis 1-8 (inclusive) according to their positions on the network switch and in the carrying case.
 To enable user-defined, static IP addresses, edit the file /etc/dhcpcd.conf on each Pi and uncomment/edit the lines:
@@ -56,7 +56,7 @@ static ip_address=192.168.0.10X/24
 ```
 where, X denotes the number to be assigned for every Pi. After this change has been made on a particular Pi, reboot the machine. Once this is done for all Pis in the network, they should all be able to ping each other at those addresses.
 
-# Set password, Enable SSH and Reboot Pi
+## Set password, Enable SSH and Reboot Pi
 
 To enable ssh on each Pi, we need to follow these instructions
 
@@ -79,7 +79,7 @@ Alternatively we can also use the following commands:
 sudo systemctl enable ssh
 sudo systemctl start ssh
 ```
-# Hostname
+## Hostname
 
 Initially, all the Pis are known as raspberrypi, and have a single user, pi: Two files must be edited: /etc/hosts and /etc/hostname.  In the /etc/hostname we change the hostnames to pi1,pi2,pi3 and so on
 
@@ -100,7 +100,7 @@ In order to accomplish this, we need to edit 2 files /etc/hosts and /etc/hostnam
 192.168.0.102 pi2
 ```
 
-# Simplifying SSH
+## Simplifying SSH
 
 To connect from one Pi to another, having followed only the above instructions, would require the following series of commands
 
