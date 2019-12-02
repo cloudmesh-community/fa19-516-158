@@ -23,6 +23,9 @@ So it would be a good idea if we could somehow turn such a platform more powerfu
 
 ## Implementation
 
+* Multiple Hosts using cloudmesh parameter: cms sys command generate hadoop
+<https://github.com/cloudmesh-community/fa19-516-158/tree/master/project>
+
 The operating system used for the Raspberry Pi is Raspbian, a Debian-based operating system developed and maintained by the Raspberry Pi Foundation. It is the Foundation's official supported OS.
 
 * To install Raspbian, download the image from the official Raspberry Pi website. Different versions of images can be found with <https://downloads.raspberrypi.org/raspbian_lite/images/>
@@ -422,7 +425,8 @@ hadoop fs -put $SPARK_HOME/README.md /
 
 ## Benchmark and Evaluation 
 
-* Develop a test program to review Hadoop and Spark on Clusters
+* Developed a test program(word count) to review Hadoop and Spark on Clusters
+* 
 
 ## References
 
