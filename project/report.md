@@ -438,8 +438,12 @@ hdfs namenode -format -force
 
 ## Boot HDFS
 
+* Start HDFS by running the following script from master node: 
 ```
 start dfs.sh
+```
+* Start YARN with the following script from master node:
+```
 start yarn.sh
 ```
 
