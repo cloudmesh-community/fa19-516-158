@@ -18,8 +18,9 @@ class HostCommand(PluginCommand):
           Usage:
               host scp NAMES SOURCE DESTINATION
               host ssh NAMES COMMAND
-              host keys get NAMES
-              host keys put NAMES
+              host keys cat NAMES
+              host keys add NAMES
+              host keys list NAMES
 
           This command does some useful things.
 
@@ -41,10 +42,10 @@ class HostCommand(PluginCommand):
         elif arguments.ssh:
             raise NotImplementedError
 
-        elif arguments.keys and arguments.get:
+        elif arguments.keys and arguments.cat:
             raise NotImplementedError
 
-        elif arguments.keys and arguments.put:
+        elif arguments.keys and arguments.add:
             raise NotImplementedError
 
 
