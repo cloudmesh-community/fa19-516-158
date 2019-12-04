@@ -114,6 +114,29 @@ In order to accomplish this, we need to edit 2 files /etc/hosts and /etc/hostnam
 192.168.0.101 pi1
 192.168.0.102 pi2
 ```
+## Open SSH 
+
+* Installing OpenSSH Server
+```
+sudo apt-install openssh-server
+sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.original
+sudo chmod a-w /etc/ssh/sshd_config.original
+```
+
+* Disable, Enable, Start, Stop SSH Server
+```
+sudo systemctl disable ssh;
+sudo systemctl enable ssh;
+sudo systemctl start ssh;
+sudo systemctl start ssh;
+```
+
+* Adding SSH agent
+```
+eval $(ssh-agent)
+ssh-add
+```
+
 
 ## Simplifying SSH
 
