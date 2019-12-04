@@ -1,35 +1,59 @@
 # To get hostname of other pis in the network
-function otherpis {
-        grep "pi" /etc/hosts | awk '{print $2}' | grep -v $(hostname) 
-}
+
+names = red[01-03]
+Shell.run(names, "sudo apt-get install rsync")
+
+
+#function otherpis {
+#        grep "pi" /etc/hosts | awk '{print $2}' | grep -v $(hostname)
+#}
+
+
 
 # To send commands to other pis in the network
-function clustercmd {
-        for pi in $(otherpis); do ssh $pi "$@"; done
-        $@
-}
+#function clustercmd {
+#        for pi in $(otherpis); do ssh $pi "$@"; done
+#        $@
+#}
 
 # To send files to other pis
-function clusterscp {
-        for pi in $(otherpis); do
-                cat $1 | ssh $pi "sudo tee $1" > /dev/null 2>&1
-        done
-}
+#function clusterscp {
+#        for pi in $(otherpis); do
+#                cat $1 | ssh $pi "sudo tee $1" > /dev/null 2>&1
+#        done
+#}
+Shell.scp(source, desintaion)
+
+
 
 # To restart all pis
-function clusterreboot {
-        clustercmd sudo shutdown -r now
-}
+#function clusterreboot {
+#        clustercmd sudo shutdown -r now
+#}
+
+Shell.run(names, "clustercmd sudo shutdown -r now")
+
+
 
 # To shutdown all pis
-function clustershutdown {
-        clustercmd sudo shutdown now
-}
+#function clustershutdown {
+#        clustercmd sudo shutdown now
+#}
+
+Shell.run(names, "clustercmd sudo shutdown now")
+
+
 
 # To copy the files in /opt/hadoop to all Pis
-function copyconfig {
-        for pi in $(otherpis); do rsync -avxP $HADOOP_HOME $pi:/opt; done
-}
+#function copyconfig {
+#        for pi in $(otherpis); do rsync -avxP $HADOOP_HOME $pi:/opt; done
+#}
+
+Shell.run(names, "rsync -avxP $HADOOP_HOME {name}:/opt")
+
+
+
+
 
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-armhf
 export HADOOP_HOME=/opt/hadoop

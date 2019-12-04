@@ -11,13 +11,23 @@ class Host (object):
         :param command:
         :param output:
         :return:
+
+        Advanced usage:
+
+        cms host ssh red[01-03] \"cat /Users/grey/Desktop/github/cloudmesh-community/cm/fa19-516-158/cluster/{name}/authorized_keys\"
+
+
+
         """
 
         results = []
-        for name in names:
-            print(f"ssh {name} {command}")
 
-            result = Shell.run(command)
+        for name in names:
+            _command = command.format(name=name)
+
+            print(f"ssh {name} {_command}")
+
+            result = Shell.run(_command)
 
             if output == "lines":
                 lines = result.split("\n")
@@ -40,6 +50,7 @@ class Host (object):
         results = []
         for destination in destinations:
             command = (f"scp  {source} {destination}")
+            # result = command.format(name=name)
 
             print (command)
 
