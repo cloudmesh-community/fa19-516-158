@@ -1,7 +1,7 @@
 # To get hostname of other pis in the network
 
 names = red[01-03]
-Shell.run(names, "sudo apt-get install rsync")
+Host.ssh(names, "sudo apt-get install rsync")
 
 
 #function otherpis {
@@ -31,7 +31,7 @@ Shell.scp(source, desintaion)
 #        clustercmd sudo shutdown -r now
 #}
 
-Shell.run(names, "clustercmd sudo shutdown -r now")
+Host.ssh(names, "clustercmd sudo shutdown -r now")
 
 
 
@@ -40,7 +40,7 @@ Shell.run(names, "clustercmd sudo shutdown -r now")
 #        clustercmd sudo shutdown now
 #}
 
-Shell.run(names, "clustercmd sudo shutdown now")
+Host.ssh(names, "clustercmd sudo shutdown now")
 
 
 
@@ -49,14 +49,44 @@ Shell.run(names, "clustercmd sudo shutdown now")
 #        for pi in $(otherpis); do rsync -avxP $HADOOP_HOME $pi:/opt; done
 #}
 
-Shell.run(names, "rsync -avxP $HADOOP_HOME {name}:/opt")
+Hsot.ssh(names, "rsync -avxP $HADOOP_HOME {name}:/opt")
 
 
-
-
+exports = """
 
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-armhf
 export HADOOP_HOME=/opt/hadoop
 export SPARK_HOME=/opt/spark
 export PATH=$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$SPARK_HOME/bin:$PATH
 export HADOOP_HOME_WARN_SUPRESS=1
+
+"""
+
+bashrc = "# ????"
+
+bashrc = bashrc + exports
+
+print (bashrc)
+
+# writh this to tmp/.bashrc
+
+source = "tmp/.bashrc"
+
+Host.scp (source, "red[01-03]:.bashrc")
+
+class Hadoop():
+
+    def install():
+        rasie NotimplementedError
+
+    def uninstall():
+        rasie NotimplementedError
+
+    def register_master(name):
+        rasie NotimplementedError
+
+    def register_worker(names):
+        rasie NotimplementedError
+
+
+cms host ssh red[01-03] \"cat /Users/grey/Desktop/github/cloudmesh-community/cm/fa19-516-158/cluster/{name}/authorized_keys\"
