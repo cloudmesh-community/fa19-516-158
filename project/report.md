@@ -4,9 +4,7 @@ Akshay Kowshik, [fa19-516-150](https://github.com/cloudmesh-community/fa19-516-1
 
 Daivik Uggehalli Dayanand, [fa19-516-158](https://github.com/cloudmesh-community/fa19-516-158)
 
-Insights:
-
-https://github.com/cloudmesh-community/fa19-516-158/graphs/contributors
+Insights: https://github.com/cloudmesh-community/fa19-516-158/graphs/contributors
 
 Code Directory:
 
