@@ -1,5 +1,15 @@
 # Hadoop and Spark Clusters With Raspberry Pi
 
+:o2: you miss the basic information, see other project, there are a bunch of links to be added, you do not even include your names and hids ..... 
+
+:o2: Bash script of maset node needs to be revisisted and you need to
+look at cms host which is in inventory. That script should be improved
+as needed and made general enough for any cluster deployment on given
+hosts. for example if this needs to be added to .bashrc why not develop a cloudmesh cpmmand 
+
+cms host setup bashrc 
+
+
 ## Abstract
 
 Deployment of Hadoop and Spark on Raspberry Pi Clusters which involves:
