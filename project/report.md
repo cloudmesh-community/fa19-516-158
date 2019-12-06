@@ -9,6 +9,13 @@ hosts. for example if this needs to be added to .bashrc why not develop a cloudm
 
 cms host setup bashrc 
 
+remember you task is to develop as much as possible cms commands that makes things easier, which not
+
+cms pi deploy hadoop deploy ....
+cms pi deploy spark deploy ....
+
+
+
 
 ## Abstract
 
