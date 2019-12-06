@@ -1,7 +1,7 @@
 # Hadoop and Spark Clusters With Raspberry Pi
 
-Akshay Kowshik, fa19-516-150
-Daivik Uggehalli Dayanand, fa19-516-158
+Akshay Kowshik, fa19-516-150, <https://github.com/cloudmesh-community/fa19-516-150/>
+Daivik Uggehalli Dayanand, fa19-516-158 <https://github.com/cloudmesh-community/fa19-516-158/>
 
 Insights:
 
