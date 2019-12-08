@@ -1,4 +1,4 @@
-# Hadoop and Spark Clusters With Raspberry Pi
+# Hadoop Clusters With Raspberry Pi
 
 Akshay Kowshik, [fa19-516-150](https://github.com/cloudmesh-community/fa19-516-150)
 
@@ -26,7 +26,6 @@ cms host setup bashrc
 remember you task is to develop as much as possible cms commands that makes things easier, which not
 
 cms pi deploy hadoop deploy ....
-cms pi deploy spark deploy ....
 
 ## Introduction
 
