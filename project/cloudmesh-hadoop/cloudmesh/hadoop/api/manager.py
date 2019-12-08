@@ -12,6 +12,10 @@ class Manager(object):
     def get_hosts(self):
          #.... grep "pi" /etc/hosts | awk '{print $2}' | grep -v $(hostname)
         raise NotImplementedError
+        
+    def get_hadoop(self):
+        
+        #downloads the hadoop on a given node and copy the same file across the cluster of commands using the scp command
 
     def run(self, hosts=None, command=None, sudo=""):
         user = "pi"
