@@ -43,14 +43,11 @@ class Manager(object):
         self.run(hosts=hosts, command="uname -a")
 
     def rsync(self, hosts, source, destination):
-        #
-        # easy excersie for students
-        #
-        # To copy the files in /opt/hadoop to all Pis
+        
         #function copyconfig {
         #        for pi in $(otherpis); do rsync -avxP $HADOOP_HOME $pi:/opt; done
         #}
-        pass
+        raise NotImplementedError
 
     def setup_bashrc(self, hosts):
         exports = """
