@@ -24,7 +24,7 @@ as needed and made general enough for any cluster deployment on given
 hosts. for example if this needs to be added to .bashrc why not develop
 a cloudmesh cpmmand
 
-cms host setup bashrc 
+cms host setup bashrc
 
 remember you task is to develop as much as possible cms commands that
 makes things easier, which not
@@ -38,27 +38,25 @@ I suggest to have a command
 ```
 cms deploy --service=hadoop [--master=NAMEMASTER] [--workers=NAMEWORKERS]
 cms deploy --service=hadoop --master=NAMEMASTER --workers=NAMEWORKERS
-cms deploy --service=hadoop --master=NAMEMASTER 
+cms deploy --service=hadoop --master=NAMEMASTER
 cms deploy --service=hadoop --workers=NAMEWORKERS
 ```
 
 ```
 cms deploy --service=spark [--master=NAMEMASTER] [--workers=NAMEWORKERS]
 cms deploy --service=spark --master=NAMEMASTER --workers=NAMEWORKERS
-cms deploy --service=spark --master=NAMEMASTER 
+cms deploy --service=spark --master=NAMEMASTER
 cms deploy --service=spark --workers=NAMEWORKERS
 ```
 
 ```
 cms deploy --service=kubernetes [--master=NAMEMASTER] [--workers=NAMEWORKERS]
 cms deploy --service=kubernetes --master=NAMEMASTER --workers=NAMEWORKERS
-cms deploy --service=kubernetes --master=NAMEMASTER 
+cms deploy --service=kubernetes --master=NAMEMASTER
 cms deploy --service=kubernetes --workers=NAMEWORKERS
 ```
 
-
 if no master or workers are specified terminate with useful help message
-
 
 ## Introduction
 
@@ -104,7 +102,7 @@ Deployment of Hadoop and Spark on Raspberry Pi Clusters which involves:
 * Worker nodes store the actual data and provide processing power to run
   the jobs and will host two daemons:
 
-1. The DataNode manages the physical data stored on the node; it is 
+1. The DataNode manages the physical data stored on the node; it is
    named, NameNode.
 2. The NodeManager manages execution of tasks on the node.
 
@@ -193,6 +191,7 @@ Alternatively, raspi-config can be used in the terminal:
 6. Choose Finish
 
 Alternatively we can also use the following commands:
+
 ```
 sudo systemctl enable ssh
 sudo systemctl start ssh
@@ -212,7 +211,6 @@ $whoami
 pi
 ```
 
-
 This is very confusing if we're constantly moving back and forth between
 the different Pis on the network. To simplify this, assign each Pi a
 hostname based on its position in the network switch. Pi #1 will be
@@ -224,7 +222,8 @@ the IP''s at the end of the file like, for eg:
 192.168.0.101 pi1
 192.168.0.102 pi2
 ```
-## Open SSH 
+
+## Open SSH
 
 * Installing OpenSSH Server
 
@@ -249,7 +248,6 @@ sudo systemctl start ssh;
 eval $(ssh-agent)
 ssh-add
 ```
-
 
 ## Simplifying SSH
 
@@ -290,7 +288,6 @@ This can be further simplified using the public/private key pairs
 ssh-keygen –t ed25519
 ```
 
-
 This will generate a public and private key pair within the directory
 `~/.ssh/` which can be used to securely ssh without entering a password.
 One of these files will be called id_ed25519, this is the private key.
@@ -303,8 +300,7 @@ To overcome this problem each public key needs to be concatenated to the
 
 On all other Pis run the following command:
 
-
-```
+```bash
 $ cat ~/.ssh/id_ed25519.pub | ssh pi@192.168.0.101 'cat >> .ssh/authorized_keys'
 ```
 
@@ -314,32 +310,30 @@ should also do this for Pi #1, so that when we copy the completed
 authorized_keys file to the other Pis, they all have permission to ssh
 into Pi #1, as well(assuming that Pi1 acts as the  master node).
 
-```
+```bash
 $ cat .ssh/id_ed25519.pub >> .ssh/authorized_keys
 ```
 
 Once this is done, as well as the previous section, ssh-ing is as easy
 as:
 
-```
-
+```bash
 $ssh pi1
-
 ```
 
 To replicate the passwordless ssh across all Pis, simply copy the two
 files mentioned above from Pi #1 to each other Pi using scp
 
-```
+```bash
 $ scp ~/.ssh/authorized_keys piX:~/.ssh/authorized_keys
-$ scp ~/.ssh/config piX:~/.ssh/config 
+$ scp ~/.ssh/config piX:~/.ssh/config
 ```
 
-# Single Node(Master) set up Hadoop and Spark
+## Single Node(Master) set up Hadoop and Spark
 
 :o2: please replace this with the host command in inventory
 
-we need 
+we need
 
 scp using parameterized notation
 ssh using parameterized notation
@@ -351,16 +345,15 @@ rsync using parameterized notation
 figure out what realy needs to be added to the .bashrc. we can install
 cloudmeh an oall machines fir the ssh commands for example
 
-## Bash Script of Master Node
+### Bash Script of Master Node
 
+#### To copy the files in /opt/hadoop to all Pis
 
-### To copy the files in /opt/hadoop to all Pis
- 
 :o2: this can be done as a script and hidden
 
 for pi in $(otherpis); do rsync -avxP $HADOOP_HOME $pi:/opt; done
 
-This may be needed to be added to .bashrc 
+This may be needed to be added to .bashrc
 
 ```
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-armhf
@@ -370,35 +363,34 @@ export PATH=$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$SPARK_HOME/bin:$P
 export HADOOP_HOME_WARN_SUPRESS=1
 ```
 
-## Set JAVA_HOME
+#### Set JAVA_HOME
 
 :o2: this can be done as a script and hidden
 
 * To find Java path
 
-```
+```bash
 update-alternatives --display java
 ```
 
 * Remove /bin/java - On Debian, the link is
 
-  :o: command is not given 
-  
+  :o: command is not given
+
   /usr/lib/jvm/java-11-openjdk-armhf/bin/java, so JAVA_HOME should be
   /usr/lib/jvm/java-11-openjdk-armhf.
 
-* Update the hadoop-env.sh under ~/hadoop/etc/hadoop as: 
+* Update the hadoop-env.sh under ~/hadoop/etc/hadoop as:
 
   :o: this can be done with a script and hidden
 
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-armhf
 
-## Hadoop installation
+#### Hadoop installation
 
 :o2: this can be done as script and hidden
 
-
-```
+```bash
 wget "https://archive.apache.org/dist/hadoop/common/hadoop-3.2.0/hadoop-3.2.0.tar.gz"
 tar -xzf hadoop-3.2.0.tar.gz
 sudo mv ~/hadoop-3.2.0 /opt/hadoop
@@ -409,7 +401,7 @@ cluster so that hadoop is installed across all the nodes
 
 After the above step change the permissions on the directory using:
 
-```
+```bash
 $ sudo chown pi:pi -R /opt/hadoop
 ```
 
@@ -419,15 +411,16 @@ the version
 ```
 $ cd && hadoop version | grep Hadoop
 ```
+
 The output will be
 
 ```
 Hadoop 3.2.0
 ```
 
-## Spark installation
+#### Spark installation
 
-```
+```bash
 $ wget "https://archive.apache.org/dist/spark/spark-2.4.3/spark-2.4.3-bin-hadoop2.7.tgz"
 $ tar -xzf spark-2.4.3-bin-hadoop2.7.tgz
 $ sudo mv ~/spark-2.4.3-bin-hadoop2.7 /opt/spark
@@ -438,32 +431,32 @@ cluster so that hadoop is installed across all the nodes
 
 After the above step change the permissions on the directory using:
 
-```
+```bash
 $ sudo chown pi:pi -R /opt/spark
 ```
 
 You can also verify if hadoop has been installed correctly by checking
 the version
 
-```
+```bash
 $ cd && spark version | grep spark
 
 ```
+
 The output will be as follows
 
 ```
 ... version 2.4.3 ... Using Scala version 2.11.12 ...
 ```
 
-## Versions of Hadoop and Spark
+#### Versions of Hadoop and Spark
 
-
-```
+```bash
 $ cd && hadoop version | grep Hadoop
 $ cd && spark-shell --version
 ```
 
-## HDFS
+#### HDFS
 
 To get the Hadoop Distributed File System (HDFS) up and running, modify
 the following configuration files which are under
@@ -476,12 +469,12 @@ the following configuration files which are under
 <configuration>
 
   <property>
-  
+
     <name>fs.default.name</name>
     <value>hdfs://pi1:9000</value>
-    
+
   </property>
-  
+
 </configuration>
 ```
 
@@ -521,28 +514,28 @@ the following configuration files which are under
                 <name>mapreduce.framework.name</name>
                 <value>yarn</value>
         </property>
-        
+
         <property>
-        
+
                 <name>yarn.app.mapreduce.am.resource.mb</name>
                 <value>256</value>
         </property>
-        
+
         <property>
-        
+
                 <name>mapreduce.map.memory.mb</name>
-                
+
                 <value>128</value>
         </property>
-        
+
         <property>
-        
+
                 <name>mapreduce.reduce.memory.mb</name>
-                
+
                 <value>128</value>
         </property>
-        
-</configuration> 
+
+</configuration>
 ```
 
 4. Edit yarn-site.xml, which contains the configuration options for
@@ -552,101 +545,101 @@ the following configuration files which are under
 <configuration>
 
   <property>
-  
+
     <name>yarn.acl.enable</name>
     <value>0</value>
-    
+
   </property>
-  
+
   <property>
-  
+
     <name>yarn.resourcemanager.hostname</name>
     <value>pi1</value>
-    
+
   </property>
-  
+
   <property>
-  
+
     <name>yarn.nodemanager.aux-services</name>
     <value>mapreduce_shuffle</value>
-    
+
   </property>
-  
+
   <property>
-  
-    <name>yarn.nodemanager.auxservices.mapreduce.shuffle.class</name>  
+
+    <name>yarn.nodemanager.auxservices.mapreduce.shuffle.class</name>
     <value>org.apache.hadoop.mapred.ShuffleHandler</value>
-    
+
   </property>
- 
+
   <property>
-  
+
     <name>yarn.nodemanager.resource.memory-mb</name>
     <value>900</value>
-    
+
   </property>
-  
+
   <property>
-  
+
     <name>yarn.scheduler.maximum-allocation-mb</name>
     <value>900</value>
-    
+
   </property>
-  
+
   <property>
-  
+
     <name>yarn.scheduler.minimum-allocation-mb</name>
     <value>64</value>
-    
+
   </property>
-  
+
   <property>
-  
+
     <name>yarn.nodemanager.vmem-check-enabled</name>
     <value>false</value>
-    
+
   </property>
-  
+
 </configuration>
 ```
 
-## Format HDFS
+#### Format HDFS
 
-```
+```bash
 $ hdfs namenode -format -force
 ```
 
-## Boot HDFS
+#### Boot HDFS
 
-* Start HDFS by running the following script from master node: 
+* Start HDFS by running the following script from master node:
 
-```
+```bash
 $ start dfs.sh
 ```
 
 * Start YARN with the following script from master node:
 
-```
+```bash
 $ start yarn.sh
 ```
 
-## Test HDFS
+#### Test HDFS
 
 Check HDFS is working by creating a temporary directory
 
-```
+```bash
 $ hadoop fs -mkdir /tmp
 $ hadoop fs -ls /
 $ jps
 ```
 
-## Test Hadoop and Spark working together
+#### Test Hadoop and Spark working together
 
-```
+```bash
 $ hadoop fs -put $SPARK_HOME/README.md /
 ```
 
-## Benchmark and Evaluation 
+## Benchmark and Evaluation
 
 * Developed a test program (word count) to review Hadoop and Spark on Pi
 * Time taken to burn SD card manually = 15 minutes
@@ -658,7 +651,7 @@ $ hadoop fs -put $SPARK_HOME/README.md /
 
 * <https://raspberrytips.com/install-raspbian-raspberry-pi/>
 * <https://raspberrytips.com/raspberry-pi-cluster/>
-* https://www.raspberrypi.org/documentation/remote-access/ip-address.md
+* <https://www.raspberrypi.org/documentation/remote-access/ip-address.md>
 * <https://dqydj.com/raspberry-pi-hadoop-cluster-apache-spark-yarn/>
 * <https://www.mocomakers.com/building-a-raspberry-pi-cluster-with-apache-spark/>
 * <https://tekmarathon.com/2017/02/16/hadoop-and-spark-installation-on-raspberry-pi-3-cluster-part-4/amp/>
