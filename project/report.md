@@ -362,6 +362,7 @@ for pi in $(otherpis); do rsync -avxP $HADOOP_HOME $pi:/opt; done
 
 This may be needed to be added to .bashrc 
 
+```
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-armhf
 export HADOOP_HOME=/opt/hadoop
 export SPARK_HOME=/opt/spark
