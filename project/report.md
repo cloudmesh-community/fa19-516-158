@@ -659,5 +659,3 @@ $ hadoop fs -put $SPARK_HOME/README.md /
 * <https://dev.to/awwsmm/building-a-raspberry-pi-hadoop-spark-cluster-8b2>
 * <https://www.linode.com/docs/databases/hadoop/how-to-install-and-set-up-hadoop-cluster/>
 * <https://www.linode.com/docs/databases/hadoop/install-configure-run-spark-on-top-of-hadoop-yarn-cluster/>
-
-<br style="page-break-after:always">
