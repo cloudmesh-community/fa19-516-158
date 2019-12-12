@@ -418,7 +418,6 @@ the version
 
 ```
 $ cd && hadoop version | grep Hadoop
-
 ```
 The output will be
 
