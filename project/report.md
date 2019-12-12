@@ -83,16 +83,16 @@ control the slaves.
 
 ## Abstract
 
-Deployment of Hadoop and Spark on Raspberry Pi Clusters which involves:
+Deployment of Hadoop on Raspberry Pi Clusters which involves:
 
 * Using CM-BURN command to burn multiple SD cards at once
-* Deploying Hadoop and Spark on Raspberry PI Clusters
 * Creating a cluster with as many nodes as we have SD cards for
 
 ## Architecture
 
-* A master node maintains knowledge about the distributed file system
-* and schedules resources allocation. It will host two daemons:
+The following 
+
+* A master node maintains knowledge about the distributed file system and schedules resources allocation. It will host two daemons:
 
 1. The NameNode manages the distributed file system and knows where
    stored data blocks inside the cluster are.
@@ -112,7 +112,6 @@ Deployment of Hadoop and Spark on Raspberry Pi Clusters which involves:
 * Python
 * HDFS
 * Hadoop
-* Spark
 
 ## Implementation
 
@@ -329,7 +328,7 @@ $ scp ~/.ssh/authorized_keys piX:~/.ssh/authorized_keys
 $ scp ~/.ssh/config piX:~/.ssh/config
 ```
 
-## Single Node(Master) set up Hadoop and Spark
+## Single Node(Master) set up Hadoop
 
 :o2: please replace this with the host command in inventory
 
