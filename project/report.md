@@ -638,14 +638,6 @@ $ jps
 $ hadoop fs -put $SPARK_HOME/README.md /
 ```
 
-## Benchmark and Evaluation
-
-* Developed a test program (word count) to review Hadoop and Spark on Pi
-* Time taken to burn SD card manually = 15 minutes
-* Time taken to burn SD card using [cm-pi-burn](https://github.com/cloudmesh/cm-burn/blob/master/cm-pi-burn.py) = 3 minutes
-* Time taken to download latest Raspbian image = 4 minutes
-* Time taken to download latest Raspbian image using [cm-pi-burn](https://github.com/cloudmesh/cm-burn/blob/master/cm-pi-burn.py) = 2 minutes
-
 ## References
 
 * <https://raspberrytips.com/install-raspbian-raspberry-pi/>
