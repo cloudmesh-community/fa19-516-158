@@ -18,6 +18,8 @@ Code Directory:
 bunch of links to be added, you do not even include your names and hids
 .....
 
+:o2: check grammar
+
 :o2: several of he included xml files have unneded empty lines
 
 :o2: Bash script of maset node needs to be revisisted and you need to
