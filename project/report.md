@@ -18,6 +18,10 @@ Code Directory:
 bunch of links to be added, you do not even include your names and hids
 .....
 
+:o2: the project is not leveraging the many useful features from cloudmesh, such as 
+
+* inventory, key management, key group management, ssh logins, ..., instead of sometimes listing the technical content, you could have just developed a cms python program and integaated the technical configurations or programs in such a command. We have taught you in the first 2 weeks how to use cms sys command generae to showcase you how you can do this in minutes
+
 :o2: check grammar
 
 :o2: several of he included xml files have unneded empty lines
