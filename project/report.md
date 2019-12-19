@@ -93,7 +93,7 @@ The first 3 major steps are already implemented using cm-pi-burn. Please go thro
 
 After the first 3 steps which is performed using cm-pi-burn, each sd card would have a raspbian lite image on it, static ip address and a host name. Now we have to set up SSH to that we can connect from one Pi in the cluster to the other PI.
 
-## Set password, Enable SSH and Reboot Pi
+#### Set password, Enable SSH and Reboot Pi
 
 To enable ssh on each Pi, we need to follow these instructions
 
@@ -118,7 +118,7 @@ sudo systemctl enable ssh
 sudo systemctl start ssh
 ```
 
-## Simplifying SSH
+#### Simplifying SSH
 
 SSH can be done using the public/private keys.
 
@@ -215,7 +215,6 @@ sudo mv ~/hadoop-3.2.0 /opt/hadoop
 
 We can use clusterscp function to copy the same file across all the cluster so that hadoop is installed across all the nodes.
 
-
 This may be needed to be added to .bashrc of the master node
 
 ```
@@ -225,18 +224,6 @@ export SPARK_HOME=/opt/spark
 export PATH=$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$SPARK_HOME/bin:$PATH
 export HADOOP_HOME_WARN_SUPRESS=1
 ```
-
-#### To copy the files in /opt/hadoop to all Pis
-
-Add the following function to the .bashrc file of the master node
-
-```
-function copyconfig {
-for pi in $(otherpis); do rsync -avxP $HADOOP_HOME $pi:/opt; done
-}
-```
-
-On the master node, run ``` source ~/.bashrc && copyconfig ``` which copies Hadoop files from the master Pi node to all other Pis in the cluster.
 
 #### Set JAVA_HOME
 
@@ -378,6 +365,18 @@ the following configuration files which are under
 </configuration>
 ```
 
+#### To copy the files in /opt/hadoop to all Pis
+
+Add the following function to the .bashrc file of the master node
+
+```
+function copyconfig {
+for pi in $(otherpis); do rsync -avxP $HADOOP_HOME $pi:/opt; done
+}
+```
+
+On the master node, run ``` source ~/.bashrc && copyconfig ``` which copies Hadoop files from the master Pi node to all other Pis in the cluster.
+
 #### Format HDFS
 
 ```bash
@@ -471,6 +470,26 @@ $ hadoop fs -put $SPARK_HOME/README.md /
 ```bash
 $ cd && hadoop version | grep Hadoop
 $ cd && spark-shell --version
+```
+
+## Test if Spark works on Pi
+
+spark-shell opens the ```scala>``` command line 
+
+```
+scala> object HelloWorld {
+    |   def main(args: Array[String]): Unit = {
+    |     println("Hello, world!")
+    |   }
+    | }
+defined module HelloWorld
+
+scala> HelloWorld.main(Array())
+
+Hello, world! # Output displayed
+
+scala>:q
+>
 ```
 
 ## Acknowledgements
