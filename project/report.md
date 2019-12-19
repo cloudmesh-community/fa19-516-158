@@ -173,7 +173,7 @@ $ scp ~/.ssh/config piX:~/.ssh/config
 
 This process can be tedious and we can just use id_rsa.pub also. Furthermore we can write a scp or rsync function in python which does the above task in a much more simpler manner(we havent tried this though). 
 
-## Copying the files from one pi across the entire cluster
+#### Copying the files from one pi across the entire cluster
 
 ```
 function clusterscp {
@@ -203,7 +203,7 @@ The above bash scripts need to be added to the the ~/.bashrc file of any particu
  source ~/.bashrc && clusterscp ~/.bashrc
 ```
 
-## Hadoop installation
+#### Hadoop installation
 
 Installing Hadoop 3.2.0 into a directory called /opt/hadoop
 
@@ -226,7 +226,7 @@ export PATH=$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$SPARK_HOME/bin:$P
 export HADOOP_HOME_WARN_SUPRESS=1
 ```
 
-## To copy the files in /opt/hadoop to all Pis
+#### To copy the files in /opt/hadoop to all Pis
 
 Add the following function to the .bashrc file of the master node
 
@@ -238,7 +238,7 @@ for pi in $(otherpis); do rsync -avxP $HADOOP_HOME $pi:/opt; done
 
 On the master node, run ``` source ~/.bashrc && copyconfig ``` which copies Hadoop files from the master Pi node to all other Pis in the cluster.
 
-## Set JAVA_HOME
+#### Set JAVA_HOME
 
 * To find Java path
 
@@ -254,8 +254,6 @@ update-alternatives --display java
 * Update the hadoop-env.sh under ~/hadoop/etc/hadoop as:
 
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-armhf
-
-
 
 After the above step change the permissions on the directory using:
 
@@ -274,44 +272,6 @@ The output will be
 
 ```
 Hadoop 3.2.0
-```
-
-#### Spark installation
-
-```bash
-$ wget "https://archive.apache.org/dist/spark/spark-2.4.3/spark-2.4.3-bin-hadoop2.7.tgz"
-$ tar -xzf spark-2.4.3-bin-hadoop2.7.tgz
-$ sudo mv ~/spark-2.4.3-bin-hadoop2.7 /opt/spark
-```
-
-We can use clustercp function to copy the same file across all the
-cluster so that hadoop is installed across all the nodes
-
-After the above step change the permissions on the directory using:
-
-```bash
-$ sudo chown pi:pi -R /opt/spark
-```
-
-You can also verify if hadoop has been installed correctly by checking
-the version
-
-```bash
-$ cd && spark version | grep spark
-
-```
-
-The output will be as follows
-
-```
-... version 2.4.3 ... Using Scala version 2.11.12 ...
-```
-
-#### Versions of Hadoop and Spark
-
-```bash
-$ cd && hadoop version | grep Hadoop
-$ cd && spark-shell --version
 ```
 
 #### HDFS
@@ -446,6 +406,43 @@ Check HDFS is working by creating a temporary directory
 $ hadoop fs -mkdir /tmp
 $ hadoop fs -ls /
 $ jps
+```
+#### Spark installation
+
+```bash
+$ wget "https://archive.apache.org/dist/spark/spark-2.4.3/spark-2.4.3-bin-hadoop2.7.tgz"
+$ tar -xzf spark-2.4.3-bin-hadoop2.7.tgz
+$ sudo mv ~/spark-2.4.3-bin-hadoop2.7 /opt/spark
+```
+
+We can use clustercp function to copy the same file across all the
+cluster so that hadoop is installed across all the nodes
+
+After the above step change the permissions on the directory using:
+
+```bash
+$ sudo chown pi:pi -R /opt/spark
+```
+
+You can also verify if hadoop has been installed correctly by checking
+the version
+
+```bash
+$ cd && spark version | grep spark
+
+```
+
+The output will be as follows
+
+```
+... version 2.4.3 ... Using Scala version 2.11.12 ...
+```
+
+#### Versions of Hadoop and Spark
+
+```bash
+$ cd && hadoop version | grep Hadoop
+$ cd && spark-shell --version
 ```
 
 #### Test Hadoop and Spark working together
