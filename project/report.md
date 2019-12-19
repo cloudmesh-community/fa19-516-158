@@ -192,7 +192,7 @@ function clusterscp {
 ```
 
 The above bash script need to be added to the the ~/.bashrc file of any particular Pi.
-This process can be tedious and we can just use id_rsa.pub also. Furthermore we can write a scp or rsync function in python which does the above task in a much more simpler manner(we havent tried this though). How
+This process can be tedious and we can just use id_rsa.pub also. Furthermore we can write a scp or rsync function in python which does the above task in a much more simpler manner(we havent tried this though). 
 
 #### Hadoop installation
 
