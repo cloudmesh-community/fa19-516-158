@@ -451,6 +451,10 @@ $ cd && spark-shell --version
 $ hadoop fs -put $SPARK_HOME/README.md /
 ```
 
+## Acknowledgements
+
+I would like to thank Professor Gregor von Laszewski for his helpful contributions throughout the project via coding, as well as suggestions on how to do better. I would also like to thank Mr. Niranda Perera, for helping me with the project whenever I had issues.
+
 ## References
 
 * <https://raspberrytips.com/install-raspbian-raspberry-pi/>
