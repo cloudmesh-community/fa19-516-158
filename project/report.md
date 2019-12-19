@@ -14,6 +14,10 @@ Code Directory:
 
 * <https://github.com/cloudmesh-community/fa19-516-158/tree/master/project>
 
+Manual:
+
+* <https://github.com/cloudmesh/cloudmesh_pi_burn/blob/master/cm-pi-burn.md>
+
 :o2: you miss the basic information, see other project, there are a
 bunch of links to be added, you do not even include your names and hids
 .....
