@@ -25,8 +25,6 @@ Manual:
 
 * inventory, key management, key group management, ssh logins, ..., instead of sometimes listing the technical content, you could have just developed a cms python program and integaated the technical configurations or programs in such a command. We have taught you in the first 2 weeks how to use cms sys command generae to showcase you how you can do this in minutes
 
-:o2: check grammar
-
 :o2: Bash script of maset node needs to be revisisted and you need to
 look at cms host which is in inventory. That script should be improved
 as needed and made general enough for any cluster deployment on given
@@ -123,6 +121,24 @@ The following
 * Hadoop
 
 ## Implementation
+
+The implememation consists of the following steps
+
+1) Buring the raspian image on the SD card
+
+2) Setting Static IP address on th SD card
+
+3) Setting HostNames on the SD card
+
+4) Implementing SSH so that each PI can communicate with each other
+
+5) Downloading Hadoop on the master node 
+
+6) Copying the Hadoop files from the master node across the cluster of nodes using SCP
+
+7) Changing the Configuration Files of Hadoop to set the replication factor,NameNode location,etc
+
+The Major first 3 steps are already implemented using cm-pi-burn. Please go through this  for the 
 
 * Multiple Hosts using cloudmesh parameter: cms sys command generate
   hadoop
