@@ -240,8 +240,9 @@ update-alternatives --display java
 
 * Update the hadoop-env.sh under ~/hadoop/etc/hadoop as:
 
+```bash
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-armhf
-
+```
 After the above step change the permissions on the directory using:
 
 ```bash
@@ -369,7 +370,7 @@ the following configuration files which are under
 
 Add the following function to the .bashrc file of the master node
 
-```
+```bash
 function copyconfig {
 for pi in $(otherpis); do rsync -avxP $HADOOP_HOME $pi:/opt; done
 }
