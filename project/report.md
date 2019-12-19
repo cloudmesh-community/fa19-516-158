@@ -206,12 +206,8 @@ sudo mv ~/hadoop-3.2.0 /opt/hadoop
 
 We can use clustercp function to copy the same file across all the cluster so that hadoop is installed across all the nodes.
 
-x
 
 ```
-
-
-
 ### Bash Script of Master Node
 
 #### To copy the files in /opt/hadoop to all Pis
