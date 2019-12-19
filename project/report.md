@@ -18,8 +18,7 @@ Manual:
 
 * <https://github.com/cloudmesh/cloudmesh_pi_burn/blob/master/cm-pi-burn.md>
 
-:o2: you miss the basic information, see other project, there are a
-bunch of links to be added, you do not even include your names and hids
+
 .....
 
 :o2: the project is not leveraging the many useful features from cloudmesh, such as 
