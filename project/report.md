@@ -176,6 +176,8 @@ as:
 $ssh pi1
 ```
 
+Here again please note that pi1 is the hostname, if you have set your hostname as red01 then it automatically becomes ssh red01 and so on
+
 To replicate the passwordless ssh across all Pis, simply copy the two
 files mentioned above from Pi #1 to each other Pi using scp
 
