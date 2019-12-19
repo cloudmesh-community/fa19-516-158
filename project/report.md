@@ -219,7 +219,6 @@ The above bash scripts need to be added to the the ~/.bashrc file of any particu
 
 #### Hadoop installation
 
-:o2: this can be done as script and hidden
 
 ```bash
 wget "https://archive.apache.org/dist/hadoop/common/hadoop-3.2.0/hadoop-3.2.0.tar.gz"
@@ -228,7 +227,6 @@ sudo mv ~/hadoop-3.2.0 /opt/hadoop
 ```
 
 We can use clustercp function to copy the same file across all the cluster so that hadoop is installed across all the nodes.
-
 
 ```
 ### Bash Script of Master Node
