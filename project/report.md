@@ -18,7 +18,7 @@ Manual:
 
 * <https://github.com/cloudmesh/cloudmesh_pi_burn/blob/master/cm-pi-burn.md>
 
-```
+
 ## Introduction
 
 Majority of the data in today's world has been stored in HDFS. HDFS
