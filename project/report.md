@@ -14,6 +14,8 @@ Code Directory:
 
 * <https://github.com/cloudmesh-community/fa19-516-158/tree/master/project>
 
+The last 2 links of the code needs to be verfied once and is not fully implemented
+
 Manual:
 
 * <https://github.com/cloudmesh/cloudmesh_pi_burn/blob/master/cm-pi-burn.md>
@@ -31,23 +33,6 @@ as needed and made general enough for any cluster deployment on given
 hosts. for example if this needs to be added to .bashrc why not develop
 a cloudmesh cpmmand
 
-cms host setup bashrc
-
-remember you task is to develop as much as possible cms commands that
-makes things easier, which not
-
-cms pi deploy hadoop deploy ....
-
-:o2: This is an unnecessary complex documentation, with lots of details that we realy do not need
-
-I suggest to have a command
-
-```
-cms deploy --service=hadoop [--master=NAMEMASTER] [--workers=NAMEWORKERS]
-cms deploy --service=hadoop --master=NAMEMASTER --workers=NAMEWORKERS
-cms deploy --service=hadoop --master=NAMEMASTER
-cms deploy --service=hadoop --workers=NAMEWORKERS
-```
 ## Introduction
 
 Majority of the data in today's world has been stored in HDFS. HDFS
@@ -186,13 +171,6 @@ into Pi #1, as well(assuming that Pi1 acts as the  master node).
 $ cat .ssh/id_ed25519.pub >> .ssh/authorized_keys
 ```
 
-Once this is done, as well as the previous section, ssh-ing is as easy
-as:
-
-```bash
-$ssh pi1
-```
-
 To replicate the passwordless ssh across all Pis, simply copy the two
 files mentioned above from Pi #1 to each other Pi using scp
 
@@ -219,7 +197,6 @@ We can use clustercp function to copy the same file across all the cluster so th
 
 
 ```
-
 
 
 ### Bash Script of Master Node
