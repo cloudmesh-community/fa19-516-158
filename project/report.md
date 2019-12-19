@@ -90,7 +90,7 @@ The implemenation consists of the following steps
 
 1) Buring the raspian image on the SD card
 
-2) Setting Static IP address on th SD card
+2) Setting Static IP address on the SD card
 
 3) Setting HostNames on the SD card
 
