@@ -14,8 +14,6 @@ Code Directory:
 
 * <https://github.com/cloudmesh-community/fa19-516-158/tree/master/project>
 
-The last 2 links of the code needs to be verfied once and is not fully implemented
-
 Manual:
 
 * <https://github.com/cloudmesh/cloudmesh_pi_burn/blob/master/cm-pi-burn.md>
@@ -23,12 +21,33 @@ Manual:
 
 .....
 
+:o2: the project is not leveraging the many useful features from cloudmesh, such as 
+
+* inventory, key management, key group management, ssh logins, ..., instead of sometimes listing the technical content, you could have just developed a cms python program and integaated the technical configurations or programs in such a command. We have taught you in the first 2 weeks how to use cms sys command generae to showcase you how you can do this in minutes
+
 :o2: Bash script of maset node needs to be revisisted and you need to
 look at cms host which is in inventory. That script should be improved
 as needed and made general enough for any cluster deployment on given
 hosts. for example if this needs to be added to .bashrc why not develop
 a cloudmesh cpmmand
 
+cms host setup bashrc
+
+remember you task is to develop as much as possible cms commands that
+makes things easier, which not
+
+cms pi deploy hadoop deploy ....
+
+:o2: This is an unnecessary complex documentation, with lots of details that we realy do not need
+
+I suggest to have a command
+
+```
+cms deploy --service=hadoop [--master=NAMEMASTER] [--workers=NAMEWORKERS]
+cms deploy --service=hadoop --master=NAMEMASTER --workers=NAMEWORKERS
+cms deploy --service=hadoop --master=NAMEMASTER
+cms deploy --service=hadoop --workers=NAMEWORKERS
+```
 ## Introduction
 
 Majority of the data in today's world has been stored in HDFS. HDFS
@@ -90,7 +109,7 @@ The implemenation consists of the following steps
 
 1) Buring the raspian image on the SD card
 
-2) Setting Static IP address on the SD card
+2) Setting Static IP address on th SD card
 
 3) Setting HostNames on the SD card
 
@@ -167,15 +186,30 @@ into Pi #1, as well(assuming that Pi1 acts as the  master node).
 $ cat .ssh/id_ed25519.pub >> .ssh/authorized_keys
 ```
 
+Once this is done, as well as the previous section, ssh-ing is as easy
+as:
+
+```bash
+$ssh pi1
+```
+
 To replicate the passwordless ssh across all Pis, simply copy the two
 files mentioned above from Pi #1 to each other Pi using scp
 
-```bash
+```
 $ scp ~/.ssh/authorized_keys piX:~/.ssh/authorized_keys
 $ scp ~/.ssh/config piX:~/.ssh/config
 ```
+```
+function clusterscp {
+  for pi in $(otherpis); do
+    cat $1 | ssh $pi "sudo tee $1" > /dev/null 2>&1
+  done
+}
+```
 
-This process can be tedious and we can just use id_rsa.pub also. Furthermore we can write a scp or rsync function in python which does the above task in a much more simpler manner(we havent tried this though)
+The above bash script need to be added to the the ~/.bashrc file of any particular Pi.
+This process can be tedious and we can just use id_rsa.pub also. Furthermore we can write a scp or rsync function in python which does the above task in a much more simpler manner(we havent tried this though). How
 
 #### Hadoop installation
 
@@ -188,6 +222,12 @@ sudo mv ~/hadoop-3.2.0 /opt/hadoop
 ```
 
 We can use clustercp function to copy the same file across all the cluster so that hadoop is installed across all the nodes.
+
+x
+
+```
+
+
 
 ### Bash Script of Master Node
 
