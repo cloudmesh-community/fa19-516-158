@@ -105,7 +105,7 @@ The following
 
 ## Implementation
 
-The implememation consists of the following steps
+The implemenation consists of the following steps
 
 1) Buring the raspian image on the SD card
 
@@ -151,62 +151,11 @@ Alternatively we can also use the following commands:
 sudo systemctl enable ssh
 sudo systemctl start ssh
 ```
-## Open SSH
-
-* Installing OpenSSH Server
-
-```
-sudo apt-install openssh-server
-sudo cp /etc/ssh/sshd_config /etc/ssh/sshd_config.original
-sudo chmod a-w /etc/ssh/sshd_config.original
-```
-
-* Disable, Enable, Start, Stop SSH Server
-
-```
-sudo systemctl disable ssh;
-sudo systemctl enable ssh;
-sudo systemctl start ssh;
-sudo systemctl start ssh;
-```
-
-* Adding SSH agent
-
-```
-eval $(ssh-agent)
-ssh-add
-```
 
 ## Simplifying SSH
 
 To connect from one Pi to another, having followed only the above
 instructions, would require the following series of commands
-
-```
-$ ssh pi@192.168.0.10X
-pi@192.168.0.10X's password: <enter password – 'raspberry' default>
-```
-
-Instead of the above approach we can use SSH aliases which facilitates
-easier and faster access
-
-For this we have to edit the `~/.ssh/config` file and add the following
-commands
-
-```
-Host piX
-User pi
-Hostname 192.168.0.10X
-```
-
-X needs to be replaced with the respective PI number
-
-The output screen is depicted as follows:
-
-```
-$ ssh piX
-pi@192.168.0.10X's password: <enter password>
-```
 
 This can be further simplified using the public/private key pairs
 
