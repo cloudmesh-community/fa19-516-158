@@ -18,18 +18,6 @@ Manual:
 
 * <https://github.com/cloudmesh/cloudmesh_pi_burn/blob/master/cm-pi-burn.md>
 
-
-.....
-
-:o2: This is an unnecessary complex documentation, with lots of details that we realy do not need
-
-I suggest to have a command
-
-```
-cms deploy --service=hadoop [--master=NAMEMASTER] [--workers=NAMEWORKERS]
-cms deploy --service=hadoop --master=NAMEMASTER --workers=NAMEWORKERS
-cms deploy --service=hadoop --master=NAMEMASTER
-cms deploy --service=hadoop --workers=NAMEWORKERS
 ```
 ## Introduction
 
@@ -63,8 +51,6 @@ Deployment of Hadoop on Raspberry Pi Clusters which involves:
 
 ## Architecture
 
-The following 
-
 * A master node maintains knowledge about the distributed file system and schedules resources allocation. It will host two daemons:
 
 1. The NameNode manages the distributed file system and knows where
@@ -88,7 +74,7 @@ The following
 
 ## Implementation
 
-The implemenation consists of the following steps
+The implemenation consists of the following steps:
 
 1) Buring the raspian image on the SD card
 
