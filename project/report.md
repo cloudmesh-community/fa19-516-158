@@ -113,7 +113,7 @@ The implememation consists of the following steps
 
 3) Setting HostNames on the SD card
 
-4) Implementing SSH so that each PI can communicate with each other
+4) Implementing SSH so that we can connect from one PI to the other.
 
 5) Downloading Hadoop on the master node 
 
@@ -121,63 +121,11 @@ The implememation consists of the following steps
 
 7) Changing the Configuration Files of Hadoop to set the replication factor,NameNode location,etc
 
-The Major first 3 steps are already implemented using cm-pi-burn. Please go through this [cm-pi-burn](<https://github.com/cloudmesh/cloudmesh_pi_burn/blob/master/cm-pi-burn.md>)  for the implementation of the first 3 steps.
+The Major first 3 steps are already implemented using cm-pi-burn. Please go through this [cm-pi-burn](<https://github.com/cloudmesh/cloudmesh_pi_burn/blob/master/cm-pi-burn.md>) for the implementation of the first 3 steps. We will walk through the steps starting from the 4th as to what we have tried on a single node cluster and it works good. We have used bash scipt for our implementation which could be replaced by python script by leveraging the use of host command in the future. The document outlines the steps to be followed to deploy hadoop on a single node cluster.
 
-* Multiple Hosts using cloudmesh parameter: cms sys command generate
-  hadoop
-  <https://github.com/cloudmesh-community/fa19-516-158/blob/master/project/cloudmesh-hadoop/cloudmesh/hadoop/api/manager.py>
+However we do outline the steps which could be followed to automate the entire process across mutiple nodes(we havent tried this).
 
-The operating system used for the Raspberry Pi is Raspbian, a
-Debian-based operating system developed and maintained by the Raspberry
-Pi Foundation. It is the Foundation's official supported OS.
-
-* To install Raspbian, download the image from the official Raspberry Pi
-  website. Different versions of images can be found with
-  <https://downloads.raspberrypi.org/raspbian_lite/images/>
-
-* Download latest Raspbian Buster Lite image from
-  <https://downloads.raspberrypi.org/raspbian_lite/images/raspbian_lite-2019-09-30/>
-
-* This .img file needs to be burned on the SD card manually. To do this,
-  use Etcher on Windows to select the .img file to burn the image onto
-  the SD card. This is time consuming and has to be repeated for every
-  SD card. Instead, we can write a program to automate this process.
-
-* Clone the cm-burn repository
-  <https://github.com/cloudmesh/cm-burn.git> to the local system. Insert
-  a blank SD card and use the cm-pi-burn.py script to burn the Raspbian
-  image onto the blank SD card.
-
-* In a root shell:
-
-```
-# cm-pi-burn image get latest
-# cm-pi-burn image ls
-# cm-pi-burn create --image=2019-09-26-raspbian-buster-lite
-                    --device=/dev/sda
-                    --hostname=red[2-6] --ipaddr=192.168.1.[2-6]
-                    --sshkey=id_ed25519
-```
-
-This gets the latest image and burns images sequentially on the SD card.
-
-## Setting static IP for each Pi on Network Switch
-
-To facilitate easy networking of the Pis, we are  going to set static IP
-addresses for each Pi on the network switch. we will number the Pis 1-8
-(inclusive) according to their positions on the network switch and in
-the carrying case. To enable user-defined, static IP addresses, edit the
-file /etc/dhcpcd.conf on each Pi and uncomment/edit the lines:
-
-```
-interface eth0
-static ip_address=192.168.0.10X/24
-```
-
-where, X denotes the number to be assigned for every Pi. After this
-change has been made on a particular Pi, reboot the machine. Once this
-is done for all Pis in the network, they should all be able to ping each
-other at those addresses.
+After the first 3 steps which is performed using cm-pi-burn each sd card would have a raspbian image on it, static ip address and a host name.Now we have to set up SSH to that we can connect from one Pi in the cluster to the other PI
 
 ## Set password, Enable SSH and Reboot Pi
 
