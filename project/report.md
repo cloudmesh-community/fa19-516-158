@@ -151,33 +151,6 @@ Alternatively we can also use the following commands:
 sudo systemctl enable ssh
 sudo systemctl start ssh
 ```
-
-## Hostname
-
-Initially, all the Pis are known as raspberrypi, and have a single user,
-pi: Two files must be edited: /etc/hosts and /etc/hostname.  In the
-/etc/hostname we change the hostnames to pi1,pi2,pi3 and so on
-
-```
-$ hostname
-raspberrypi
-
-$whoami
-pi
-```
-
-This is very confusing if we're constantly moving back and forth between
-the different Pis on the network. To simplify this, assign each Pi a
-hostname based on its position in the network switch. Pi #1 will be
-known as pi1, Pi #2 as pi2, and so on. In order to accomplish this, we
-need to edit 2 files /etc/hosts and /etc/hostname. In /etc/hosts we add
-the IP''s at the end of the file like, for eg:
-
-```
-192.168.0.101 pi1
-192.168.0.102 pi2
-```
-
 ## Open SSH
 
 * Installing OpenSSH Server
