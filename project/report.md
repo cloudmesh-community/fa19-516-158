@@ -121,9 +121,7 @@ The implemenation consists of the following steps
 
 7) Changing the Configuration Files of Hadoop to set the replication factor,NameNode location,etc
 
-The Major first 3 steps are already implemented using cm-pi-burn. Please go through this [cm-pi-burn](<https://github.com/cloudmesh/cloudmesh_pi_burn/blob/master/cm-pi-burn.md>) for the implementation of the first 3 steps. We will walk through the steps starting from the 4th as to what we have tried on a single node cluster and it works good. We have used bash scipt for our implementation which could be replaced by python script by leveraging the use of host command in the future. The document outlines the steps to be followed to deploy hadoop on a single node cluster.
-
-However we do outline the steps which could be followed to automate the entire process across mutiple nodes(we havent tried this).
+The Major first 3 steps are already implemented using cm-pi-burn. Please go through this [cm-pi-burn](<https://github.com/cloudmesh/cloudmesh_pi_burn/blob/master/cm-pi-burn.md>) for the implementation of the first 3 steps. After the buring of sd cards using cm-pi-burn command the first 3 steps will automatically be done by it. We will walk through the steps starting from the 4th as to what we have practically tried on a 5 node cluster and it works good. We have used bash scipt for our implementation which could be replaced by python script by leveraging the use of host command in the future. 
 
 After the first 3 steps which is performed using cm-pi-burn each sd card would have a raspbian image on it, static ip address and a host name.Now we have to set up SSH to that we can connect from one Pi in the cluster to the other PI
 
@@ -154,10 +152,7 @@ sudo systemctl start ssh
 
 ## Simplifying SSH
 
-To connect from one Pi to another, having followed only the above
-instructions, would require the following series of commands
-
-This can be further simplified using the public/private key pairs
+SSH can be done using the public/private keys
 
 :o: this is too complex we just use `id_ras.pub`
 
@@ -206,21 +201,26 @@ $ scp ~/.ssh/authorized_keys piX:~/.ssh/authorized_keys
 $ scp ~/.ssh/config piX:~/.ssh/config
 ```
 
-## Single Node(Master) set up Hadoop
+This process can be tedious and we can just use id_rsa.pub also. Furthermore we can write a scp or rsync function in python which does the above task in a much more simpler manner(we havent tried this though)
 
-:o2: please replace this with the host command in inventory
+#### Hadoop installation
 
-we need
+:o2: this can be done as script and hidden
 
-scp using parameterized notation
-ssh using parameterized notation
-register workers and master in inventory
-restart using parameterized notation
-shutdown using parameterized notation
-rsync using parameterized notation
+```bash
+wget "https://archive.apache.org/dist/hadoop/common/hadoop-3.2.0/hadoop-3.2.0.tar.gz"
+tar -xzf hadoop-3.2.0.tar.gz
+sudo mv ~/hadoop-3.2.0 /opt/hadoop
+```
 
-figure out what realy needs to be added to the .bashrc. we can install
-cloudmeh an oall machines fir the ssh commands for example
+We can use clustercp function to copy the same file across all the cluster so that hadoop is installed across all the nodes.
+
+```
+
+
+```
+
+
 
 ### Bash Script of Master Node
 
@@ -263,18 +263,7 @@ update-alternatives --display java
 
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-armhf
 
-#### Hadoop installation
 
-:o2: this can be done as script and hidden
-
-```bash
-wget "https://archive.apache.org/dist/hadoop/common/hadoop-3.2.0/hadoop-3.2.0.tar.gz"
-tar -xzf hadoop-3.2.0.tar.gz
-sudo mv ~/hadoop-3.2.0 /opt/hadoop
-```
-
-We can use clustercp function to copy the same file across all the
-cluster so that hadoop is installed across all the nodes
 
 After the above step change the permissions on the directory using:
 
