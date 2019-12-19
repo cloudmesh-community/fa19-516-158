@@ -138,7 +138,7 @@ The implememation consists of the following steps
 
 7) Changing the Configuration Files of Hadoop to set the replication factor,NameNode location,etc
 
-The Major first 3 steps are already implemented using cm-pi-burn. Please go through this  for the 
+The Major first 3 steps are already implemented using cm-pi-burn. Please go through this [cm-pi-burn](<https://github.com/cloudmesh/cloudmesh_pi_burn/blob/master/cm-pi-burn.md>)  for the 
 
 * Multiple Hosts using cloudmesh parameter: cms sys command generate
   hadoop
