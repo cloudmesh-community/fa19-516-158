@@ -21,23 +21,6 @@ Manual:
 
 .....
 
-:o2: the project is not leveraging the many useful features from cloudmesh, such as 
-
-* inventory, key management, key group management, ssh logins, ..., instead of sometimes listing the technical content, you could have just developed a cms python program and integaated the technical configurations or programs in such a command. We have taught you in the first 2 weeks how to use cms sys command generae to showcase you how you can do this in minutes
-
-:o2: Bash script of maset node needs to be revisisted and you need to
-look at cms host which is in inventory. That script should be improved
-as needed and made general enough for any cluster deployment on given
-hosts. for example if this needs to be added to .bashrc why not develop
-a cloudmesh cpmmand
-
-cms host setup bashrc
-
-remember you task is to develop as much as possible cms commands that
-makes things easier, which not
-
-cms pi deploy hadoop deploy ....
-
 :o2: This is an unnecessary complex documentation, with lots of details that we realy do not need
 
 I suggest to have a command
