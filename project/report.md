@@ -18,7 +18,6 @@ Manual:
 
 * <https://github.com/cloudmesh/cloudmesh_pi_burn/blob/master/cm-pi-burn.md>
 
-
 ## Introduction
 
 Majority of the data in today's world has been stored in HDFS. HDFS
@@ -82,17 +81,17 @@ The implemenation consists of the following steps:
 
 3) Setting HostNames on the SD card
 
-4) Implementing SSH so that we can connect from one PI to the other.
+4) Implementing SSH so that we can connect from one PI to the other
 
 5) Downloading Hadoop on the master node 
 
 6) Copying the Hadoop files from the master node across the cluster of nodes using SCP
 
-7) Changing the Configuration Files of Hadoop to set the replication factor,NameNode location,etc
+7) Changing the Configuration Files of Hadoop to set the replication factor, NameNode location
 
-The Major first 3 steps are already implemented using cm-pi-burn. Please go through this [cm-pi-burn](<https://github.com/cloudmesh/cloudmesh_pi_burn/blob/master/cm-pi-burn.md>) for the implementation of the first 3 steps. After the buring of sd cards using cm-pi-burn command the first 3 steps will automatically be done by it. We will walk through the steps starting from the 4th as to what we have practically tried on a 5 node cluster and it works good. We have used bash scipt for our implementation which could be replaced by python script by leveraging the use of host command in the future. 
+The first 3 major steps are already implemented using cm-pi-burn. Please go through this [cm-pi-burn](<https://github.com/cloudmesh/cloudmesh_pi_burn/blob/master/cm-pi-burn.md>) for the implementation of the first 3 steps. After the buring of sd cards using cm-pi-burn command, the first 3 steps will automatically be done by it. We will walk through the steps starting from the 4th as to what we have practically tried on a 5 node cluster and it works good. We have used bash scipt for our implementation which could be replaced by python script by leveraging the use of host command in the future. 
 
-After the first 3 steps which is performed using cm-pi-burn each sd card would have a raspbian image on it, static ip address and a host name.Now we have to set up SSH to that we can connect from one Pi in the cluster to the other PI.
+After the first 3 steps which is performed using cm-pi-burn, each sd card would have a raspbian lite image on it, static ip address and a host name. Now we have to set up SSH to that we can connect from one Pi in the cluster to the other PI.
 
 ## Set password, Enable SSH and Reboot Pi
 
@@ -174,7 +173,8 @@ $ scp ~/.ssh/config piX:~/.ssh/config
 
 This process can be tedious and we can just use id_rsa.pub also. Furthermore we can write a scp or rsync function in python which does the above task in a much more simpler manner(we havent tried this though). 
 
-### Copying the files from one pi across the entire cluster
+## Copying the files from one pi across the entire cluster
+
 ```
 function clusterscp {
   for pi in $(otherpis); do
@@ -203,27 +203,20 @@ The above bash scripts need to be added to the the ~/.bashrc file of any particu
  source ~/.bashrc && clusterscp ~/.bashrc
 ```
 
-#### Hadoop installation
+## Hadoop installation
 
+Installing Hadoop 3.2.0 into a directory called /opt/hadoop
 
-```bash
+```
 wget "https://archive.apache.org/dist/hadoop/common/hadoop-3.2.0/hadoop-3.2.0.tar.gz"
 tar -xzf hadoop-3.2.0.tar.gz
 sudo mv ~/hadoop-3.2.0 /opt/hadoop
 ```
 
-We can use clustercp function to copy the same file across all the cluster so that hadoop is installed across all the nodes.
+We can use clusterscp function to copy the same file across all the cluster so that hadoop is installed across all the nodes.
 
-```
-### Bash Script of Master Node
 
-#### To copy the files in /opt/hadoop to all Pis
-
-:o2: this can be done as a script and hidden
-
-for pi in $(otherpis); do rsync -avxP $HADOOP_HOME $pi:/opt; done
-
-This may be needed to be added to .bashrc
+This may be needed to be added to .bashrc of the master node
 
 ```
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-armhf
@@ -233,9 +226,19 @@ export PATH=$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$SPARK_HOME/bin:$P
 export HADOOP_HOME_WARN_SUPRESS=1
 ```
 
-#### Set JAVA_HOME
+## To copy the files in /opt/hadoop to all Pis
 
-:o2: this can be done as a script and hidden
+Add the following function to the .bashrc file of the master node
+
+```
+function copyconfig {
+for pi in $(otherpis); do rsync -avxP $HADOOP_HOME $pi:/opt; done
+}
+```
+
+On the master node, run ``` source ~/.bashrc && copyconfig ``` which copies Hadoop files from the master Pi node to all other Pis in the cluster.
+
+## Set JAVA_HOME
 
 * To find Java path
 
@@ -245,14 +248,10 @@ update-alternatives --display java
 
 * Remove /bin/java - On Debian, the link is
 
-  :o: command is not given
-
   /usr/lib/jvm/java-11-openjdk-armhf/bin/java, so JAVA_HOME should be
   /usr/lib/jvm/java-11-openjdk-armhf.
 
 * Update the hadoop-env.sh under ~/hadoop/etc/hadoop as:
-
-  :o: this can be done with a script and hidden
 
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-armhf
 
