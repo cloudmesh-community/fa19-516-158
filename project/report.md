@@ -106,7 +106,7 @@ The implemenation consists of the following steps
 
 The Major first 3 steps are already implemented using cm-pi-burn. Please go through this [cm-pi-burn](<https://github.com/cloudmesh/cloudmesh_pi_burn/blob/master/cm-pi-burn.md>) for the implementation of the first 3 steps. After the buring of sd cards using cm-pi-burn command the first 3 steps will automatically be done by it. We will walk through the steps starting from the 4th as to what we have practically tried on a 5 node cluster and it works good. We have used bash scipt for our implementation which could be replaced by python script by leveraging the use of host command in the future. 
 
-After the first 3 steps which is performed using cm-pi-burn each sd card would have a raspbian image on it, static ip address and a host name.Now we have to set up SSH to that we can connect from one Pi in the cluster to the other PI
+After the first 3 steps which is performed using cm-pi-burn each sd card would have a raspbian image on it, static ip address and a host name.Now we have to set up SSH to that we can connect from one Pi in the cluster to the other PI.
 
 ## Set password, Enable SSH and Reboot Pi
 
@@ -135,7 +135,7 @@ sudo systemctl start ssh
 
 ## Simplifying SSH
 
-SSH can be done using the public/private keys
+SSH can be done using the public/private keys.
 
 :o: this is too complex we just use `id_ras.pub`
 
@@ -185,6 +185,10 @@ files mentioned above from Pi #1 to each other Pi using scp
 $ scp ~/.ssh/authorized_keys piX:~/.ssh/authorized_keys
 $ scp ~/.ssh/config piX:~/.ssh/config
 ```
+
+This process can be tedious and we can just use id_rsa.pub also. Furthermore we can write a scp or rsync function in python which does the above task in a much more simpler manner(we havent tried this though). 
+
+### Copying the files from one pi across the entire cluster
 ```
 function clusterscp {
   for pi in $(otherpis); do
@@ -193,8 +197,25 @@ function clusterscp {
 }
 ```
 
-The above bash script need to be added to the the ~/.bashrc file of any particular Pi.
-This process can be tedious and we can just use id_rsa.pub also. Furthermore we can write a scp or rsync function in python which does the above task in a much more simpler manner(we havent tried this though). 
+we have added some more useful function too such as rebooting the entire cluster,shutdown the cluster.
+
+```
+function clusterreboot {
+  clustercmd sudo shutdown -r now
+}
+```
+
+```
+function clustershutdown {
+  clustercmd sudo shutdown now
+}
+```
+
+The above bash scripts need to be added to the the ~/.bashrc file of any particular Pi. Now all the functions defined in the ~/.bashrc file can be copied across all the other nodes by using:
+
+```
+ source ~/.bashrc && clusterscp ~/.bashrc
+```
 
 #### Hadoop installation
 
