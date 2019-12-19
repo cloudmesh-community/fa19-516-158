@@ -48,23 +48,6 @@ cms deploy --service=hadoop --master=NAMEMASTER --workers=NAMEWORKERS
 cms deploy --service=hadoop --master=NAMEMASTER
 cms deploy --service=hadoop --workers=NAMEWORKERS
 ```
-
-```
-cms deploy --service=spark [--master=NAMEMASTER] [--workers=NAMEWORKERS]
-cms deploy --service=spark --master=NAMEMASTER --workers=NAMEWORKERS
-cms deploy --service=spark --master=NAMEMASTER
-cms deploy --service=spark --workers=NAMEWORKERS
-```
-
-```
-cms deploy --service=kubernetes [--master=NAMEMASTER] [--workers=NAMEWORKERS]
-cms deploy --service=kubernetes --master=NAMEMASTER --workers=NAMEWORKERS
-cms deploy --service=kubernetes --master=NAMEMASTER
-cms deploy --service=kubernetes --workers=NAMEWORKERS
-```
-
-if no master or workers are specified terminate with useful help message
-
 ## Introduction
 
 Majority of the data in today's world has been stored in HDFS. HDFS
@@ -138,7 +121,7 @@ The implememation consists of the following steps
 
 7) Changing the Configuration Files of Hadoop to set the replication factor,NameNode location,etc
 
-The Major first 3 steps are already implemented using cm-pi-burn. Please go through this [cm-pi-burn](<https://github.com/cloudmesh/cloudmesh_pi_burn/blob/master/cm-pi-burn.md>)  for the 
+The Major first 3 steps are already implemented using cm-pi-burn. Please go through this [cm-pi-burn](<https://github.com/cloudmesh/cloudmesh_pi_burn/blob/master/cm-pi-burn.md>)  for the implementation of the first 3 steps.
 
 * Multiple Hosts using cloudmesh parameter: cms sys command generate
   hadoop
