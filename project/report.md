@@ -424,6 +424,28 @@ After the above step change the permissions on the directory using:
 $ sudo chown pi:pi -R /opt/spark
 ```
 
+Add the following 2 environment variables to the .bashrc file:
+
+```
+export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
+export LD_LIBRARY_PATH=$HADOOP_HOME/lib/native:$LD_LIBRARY_PATH
+```
+
+Create the Spark configuration file and add the following lines at the end of the config file:
+
+```
+$ cd $SPARK_HOME/conf
+$ sudo mv spark-defaults.conf.template spark-defaults.conf
+```
+
+```
+spark.master            yarn
+spark.driver.memory     465m
+spark.yarn.am.memory    356m
+spark.executor.memory   465m
+spark.executor.cores    4
+```
+
 You can also verify if hadoop has been installed correctly by checking
 the version
 
@@ -438,6 +460,12 @@ The output will be as follows
 ... version 2.4.3 ... Using Scala version 2.11.12 ...
 ```
 
+#### Test Hadoop and Spark working together
+
+```bash
+$ hadoop fs -put $SPARK_HOME/README.md /
+```
+
 #### Versions of Hadoop and Spark
 
 ```bash
@@ -445,15 +473,9 @@ $ cd && hadoop version | grep Hadoop
 $ cd && spark-shell --version
 ```
 
-#### Test Hadoop and Spark working together
-
-```bash
-$ hadoop fs -put $SPARK_HOME/README.md /
-```
-
 ## Acknowledgements
 
-I would like to thank Professor Gregor von Laszewski for his helpful contributions throughout the project via coding, as well as suggestions on how to do better. I would also like to thank Mr. Niranda Perera, for helping me with the project whenever I had issues.
+We would like to thank Professor Gregor von Laszewski for his helpful contributions throughout the project in coding, as well as suggestions on how to do better. I would also like to thank Mr. Niranda Perera, for helping me with the project whenever I had issues.
 
 ## References
 
