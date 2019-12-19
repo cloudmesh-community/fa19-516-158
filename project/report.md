@@ -473,7 +473,7 @@ $ cd && hadoop version | grep Hadoop
 $ cd && spark-shell --version
 ```
 
-## Test if Spark works on Pi
+#### Test if Spark works on Pi
 
 spark-shell opens the ```scala>``` command line 
 
