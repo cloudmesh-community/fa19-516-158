@@ -14,6 +14,8 @@ Code Directory:
 
 * <https://github.com/cloudmesh-community/fa19-516-158/tree/master/project>
 
+The last 2 links of the code needs to be verified and is not yet fully implemented
+
 Manual:
 
 * <https://github.com/cloudmesh/cloudmesh_pi_burn/blob/master/cm-pi-burn.md>
@@ -492,6 +494,16 @@ Hello, world! # Output displayed
 scala>:q
 >
 ```
+## Benchmarks
+
+The benchmarks for our project was to record the time it takes normally to burn a single SD card and do all the setup part versus the time it takes to burn one SD card using cm-burn automatically with Static IP and hostname set to it. Any cm-pi-burn help commands can be used with a -v flag along with to display the results along with the timings. For eg  cm-pi-burn [-v] create [--image=IMAGE] [--device=DEVICE][--hostname=HOSTNAME][--ipaddr=IP][--sshkey=KEY][--blocksize=BLOCKSIZE][--dryrun] will display the results along with the time it takes to burn an image along with Ip address and hostname set along with it.
+ 
+The results can be summarised as follows:
+
+Manual: 8-9 minutes to burn one SD card and set up a static IP and hostname to it
+cm-pi-burn : 420 seconds(6 minutes) to burn 2 SD cards
+
+cm-pi-burn turns out to be very much efficient as compared to the Naive approach
 
 ## Acknowledgements
 
