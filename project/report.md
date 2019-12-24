@@ -1,66 +1,57 @@
 # Hadoop Clusters With Raspberry Pi
 
-Daivik Uggehalli Dayanand, [fa19-516-158](https://github.com/cloudmesh-community/fa19-516-158)
+*Disclaimer: The writeup provided here only includes some theoretical notes. They were not implemented on a raspberry py. Furthermore, this project and the analysis of the scripts do not leverage Cloudmesh, which makes the task for interacting with a cluster much easier. We keep this section as it could provide useful for future students searching for a project. This project is incomplete. Furthermore, Gregor von Laszewski and Sub have significantly contributed to the implementation of the pi burn code. The report has been significantly updated by Gregor von Laszewski to provide guidance for others on how to proceed.*
 
-Akshay Kowshik, [fa19-516-150](https://github.com/cloudmesh-community/fa19-516-150)
+*Gregor von Laszewski
+* Daivik Uggehalli Dayanand, [fa19-516-158](https://github.com/cloudmesh-community/fa19-516-158)
+* Akshay Kowshik, [fa19-516-150](https://github.com/cloudmesh-community/fa19-516-150)
+* Insights: <https://github.com/cloudmesh-community/fa19-516-158/graphs/contributors>
 
-Insights: <https://github.com/cloudmesh-community/fa19-516-158/graphs/contributors>
-
-Code Directory:
-
-* <https://github.com/cloudmesh/cm-burn/blob/master/cmburn/>
-
-* <https://github.com/cloudmesh/cloudmesh-inventory/tree/master/cloudmesh/host>
-
-* <https://github.com/cloudmesh-community/fa19-516-158/tree/master/project>
-
-The last 2 links of the code needs to be verified and is not yet fully implemented
-
-Manual:
-
-* <https://github.com/cloudmesh/cloudmesh_pi_burn/blob/master/cm-pi-burn.md>
+* Project Directory (not operational): <https://github.com/cloudmesh-community/fa19-516-158/tree/master/project> 
+* Code: <https://github.com/cloudmesh/cm-burn/blob/master/cmburn/> 
+* Host: <https://github.com/cloudmesh/cloudmesh-inventory/tree/master/cloudmesh/host> (developed by Gregor von Laszewski)
+* Manual (mostly developed by von Laszewski): <https://github.com/cloudmesh/cloudmesh_pi_burn/blob/master/cm-pi-burn.md>
 
 ## Introduction
 
-Majority of the data in today's world has been stored in HDFS. HDFS
-stands for Hadoop Distributed Storage System. The Raspberry Pi provides
-to the community a cheap platform with the ability to expose Linux and
-other operating systems to the masses. Due to its cost point, it is easy
-to buy a PI and experiment with it. As such this platform has been ideal
-to lower the entry barrier to advanced computing from the university
-level to highschool, middle school and even elementary school. However,
-the PI has also been used by universities and even national labs. Due to
-its availability and its convenient accessibility, it has become a
-staple of our educational pipeline. Due to its price point the PI can
-also be used to build cheap clusters putting forward a hardware platform
-ideal for experimenting with issues such as networking and cluster
-management as an educational tool. Many such efforts exist to use a PI
-as a cluster environment.
+According to von Laszewski, the Raspberry Pi provides the community with
+a cheap platform with the ability to expose Linux and other operating
+systems to the masses. Due to its cost point, it is easy to buy a PI and
+experiment with it. As such, this platform has been ideal for lowering
+the entry barrier to advanced computing from the university level to
+high school, middle school, and even elementary school. However, the PI
+has also been used by universities and even national labs. Due to its
+availability and its convenient accessibility, it has become a staple of
+our educational pipeline. Due to its price point, the PI can also be
+used to build cheap clusters putting forward a hardware platform ideal
+for experimenting with issues such as networking and cluster management
+as an educational tool. Many such efforts exist to use a PI as a cluster
+environment.
 
-So it would be a good idea if we could somehow turn such a platform more
-powerful by deploying latest technologies such as Hadoop and Spark on
-it. Multi cluster Raspberry Pi, where one node can act as the master
-node and other nodes act as slaves and the master might be able to
-control the slaves.
+So it would be a good idea if we could turn such a platform more
+powerful by deploying the latest technologies such as Hadoop and Spark on
+It. Multi cluster Raspberry Pi, where one node can act as the master
+node and other nodes act like workers, and the master might be able to
+control the workers.
 
-## Abstract
+## Architecture
 
-Deployment of Hadoop on Raspberry Pi Clusters which involves:
+The deployment of Hadoop on Raspberry Pi Clusters involves the
+preparation of the cluster. This includes
 
 * Using CM-BURN command to burn multiple SD cards at once
 * Creating a cluster with as many nodes as we have SD cards for
 
-## Architecture
-
-* A master node maintains knowledge about the distributed file system and schedules resources allocation. It will host two daemons:
+Once we have a cluster, a master node maintains knowledge about the
+distributed file system and schedules resource allocation. It hosts two
+daemons:
 
 1. The NameNode manages the distributed file system and knows where
    stored data blocks inside the cluster are.
 2. The ResourceManager manages the YARN jobs and takes care of
    scheduling and executing processes on worker nodes.
 
-* Worker nodes store the actual data and provide processing power to run
-  the jobs and will host two daemons:
+The worker nodes store the actual data and provide processing power to run  the jobs and host two daemons:
 
 1. The DataNode manages the physical data stored on the node; it is
    named, NameNode.
@@ -68,146 +59,74 @@ Deployment of Hadoop on Raspberry Pi Clusters which involves:
 
 ## Technologies used
 
+To achieve this, it is beneficial to use the following technologies
+
+* cloudmesh common
+* cloudmesh-inventory
+* cloudmesh-cloud
 * cm-burn
 * Python
 * HDFS
 * Hadoop
 
+
 ## Implementation
 
-The implemenation consists of the following steps:
+The implementation consists of the following steps:
 
-1) Buring the raspian image on the SD card
+1. Buring the Raspian image on the SD card
+2. Setting Static IP address on the SD card
+3. Setting HostNames on the SD card
 
-2) Setting Static IP address on th SD card
+Due to the use of cm-pi-burn, the cluster the SD Cards come preinstalled
+with hostnames, IP addresses, user key, and ssh enabled, so accessing
+each pi is easy and possible immediately after the boot. See the
+[cm-pi-burn](<https://github.com/cloudmesh/cloudmesh_pi_burn/blob/master/cm-pi-burn.md>)
+manual for guidance on how to conduct these steps.
 
-3) Setting HostNames on the SD card
+**DISCLAIMER: THE NEXT STEPS HAVE NOT BEEN TESTED AND DO NOT LEVERAGE
+*CLOUDMESH NOR DO THEY DISCUSS HOW THEY CAN USE CLOUDMESH TO SIMPLIFY
+*THE TASK. WE NEED TO MAKE SURE YOU UNDERSTAND THIS IMPORTANT
+*RESTRICTION. AT THIS TIME THIS PROJECT IS INCOMPLETE AS IT LACKS A
+*PROPER ANALYSIS HOW TO LEVERAGE CLOUDMESH AND TO CONDUCT THE
+*DEPLOYMENT. THE METHOD DISCUSSED HERE IS COPIED FROM THE INTERNET
+*WITHOUT VERIFICATION. LINKS TO THESE DOCUMENTS ARE PROVIDED IN THE
+*REFERENCE SECTION BUT ARE NOT USED IN THE TEXT, WHICH IS TYPICALLY NOT
+*DONE AS PROPER CREDIT AND CITATION  IS IMPORTANT.**
 
-4) Implementing SSH so that we can connect from one PI to the other
 
-5) Downloading Hadoop on the master node 
+The solutions published in the Web include the use of bash scripts for
+the deployment. However, Cloudmesh provides much better features while
+providing host management and an inventory. The cluster command and
+deployment that this project was supposed to implement was not
+completed.
 
-6) Copying the Hadoop files from the master node across the cluster of nodes using SCP
 
-7) Changing the Configuration Files of Hadoop to set the replication factor, NameNode location
+The remaining steps include
 
-The first 3 major steps are already implemented using cm-pi-burn. Please go through this [cm-pi-burn](<https://github.com/cloudmesh/cloudmesh_pi_burn/blob/master/cm-pi-burn.md>) for the implementation of the first 3 steps. After the buring of sd cards using cm-pi-burn command, the first 3 steps will automatically be done by it. We will walk through the steps starting from the 4th as to what we have practically tried on a 5 node cluster and it works good. We have used bash scipt for our implementation which could be replaced by python script by leveraging the use of host command in the future. 
+4. creating passwordless keys and distributing it to all hosts 
+5. Downloading Hadoop on the master node 
+6. Copying the Hadoop files from the master node across the cluster of n7odes using SCP
+6. Changing the Configuration Files of Hadoop to set the replication factor, NameNode location
 
-After the first 3 steps which is performed using cm-pi-burn, each sd card would have a raspbian lite image on it, static ip address and a host name. Now we have to set up SSH to that we can connect from one Pi in the cluster to the other PI.
+ To create passwordless keys and to distribute them to all hosts,  you can simply call the `cms host` command and execute the ssh-keygen command on all PIs (note we need to verify that the host command works). After that, we can use the host command to fetch all keys, merge them in a
+ single `authorized_keys` file, and upload them to all of the pis. This makes it now possible to login between each pi.  Naturally, we have
+ also added our local key, so we do not lose access from our laptop
 
-#### Set password, Enable SSH and Reboot Pi
+The following functionality is needed for the cluster command
 
-To enable ssh on each Pi, we need to follow these instructions
+* copy files between all or selected nodes
+* copy files onto all or selected nodes
+* reboot an all or selected nodes
+* shutdown on all or selected nodes
 
-1. Launch Raspberry Pi Configuration from the Preferences menu
-2. Navigate to the Interfaces tab
-3. Select Enabled next to SSH
-4. Click OK
+As we use Cloudmesh these commands are trivial to implement and
+constitute a one-line implementation.
 
-Alternatively, raspi-config can be used in the terminal:
+## Hadoop installation
 
-1. Enter sudo raspi-config in a terminal window
-2. Select Interfacing Options
-3. Navigate to and select SSH
-4. Choose Yes
-5. Select Ok
-6. Choose Finish
-
-Alternatively we can also use the following commands:
-
-```
-sudo systemctl enable ssh
-sudo systemctl start ssh
-```
-
-#### Simplifying SSH
-
-SSH can be done using the public/private keys.
-
-:o: this is too complex we just use `id_ras.pub`
-
-```
-ssh-keygen –t ed25519
-```
-
-This will generate a public and private key pair within the directory
-`~/.ssh/` which can be used to securely ssh without entering a password.
-One of these files will be called id_ed25519, this is the private key.
-The other, id_ed25519.pub is the public key. The public key is used to
-communicate with the other Pis, and the private key never leaves its
-host machine and should never be moved or copied to any other device.
-
-To overcome this problem each public key needs to be concatenated to the
-`~/.ssh/authorized_keys` file on every other pi.
-
-On all other Pis run the following command:
-
-```bash
-$ cat ~/.ssh/id_ed25519.pub | ssh pi@192.168.0.101 'cat >> .ssh/authorized_keys'
-```
-
-This concatenates Pi #2's public key file to Pi #1's list of authorized
-keys, giving Pi #2 permission to ssh into Pi #1 without a password. We
-should also do this for Pi #1, so that when we copy the completed
-authorized_keys file to the other Pis, they all have permission to ssh
-into Pi #1, as well(assuming that Pi1 acts as the  master node).
-
-```bash
-$ cat .ssh/id_ed25519.pub >> .ssh/authorized_keys
-```
-
-Once this is done, as well as the previous section, ssh-ing is as easy
-as:
-
-```bash
-$ssh pi1
-```
-
-Here again please note that pi1 is the hostname, if you have set your hostname as red01 then it automatically becomes ssh red01 and so on
-
-To replicate the passwordless ssh across all Pis, simply copy the two
-files mentioned above from Pi #1 to each other Pi using scp
-
-```
-$ scp ~/.ssh/authorized_keys piX:~/.ssh/authorized_keys
-$ scp ~/.ssh/config piX:~/.ssh/config
-```
-
-This process can be tedious and we can just use id_rsa.pub also. Furthermore we can write a scp or rsync function in python which does the above task in a much more simpler manner(we havent tried this though). 
-
-#### Copying the files from one pi across the entire cluster
-
-```
-function clusterscp {
-  for pi in $(otherpis); do
-    cat $1 | ssh $pi "sudo tee $1" > /dev/null 2>&1
-  done
-}
-```
-
-we have added some more useful function too such as rebooting the entire cluster,shutdown the cluster.
-
-```
-function clusterreboot {
-  clustercmd sudo shutdown -r now
-}
-```
-
-```
-function clustershutdown {
-  clustercmd sudo shutdown now
-}
-```
-
-The above bash scripts need to be added to the the ~/.bashrc file of any particular Pi. Now all the functions defined in the ~/.bashrc file can be copied across all the other nodes by using:
-
-```
- source ~/.bashrc && clusterscp ~/.bashrc
-```
-
-#### Hadoop installation
-
-Installing Hadoop 3.2.0 into a directory called /opt/hadoop
+In this section, we discuss theoretically how to installing Hadoop 3.2.0
+into a directory called /opt/hadoop. However, we have not tried this.
 
 ```
 wget "https://archive.apache.org/dist/hadoop/common/hadoop-3.2.0/hadoop-3.2.0.tar.gz"
@@ -215,9 +134,14 @@ tar -xzf hadoop-3.2.0.tar.gz
 sudo mv ~/hadoop-3.2.0 /opt/hadoop
 ```
 
-We can use clusterscp function to copy the same file across all the cluster so that hadoop is installed across all the nodes.
+Here we would then use the Cloudmesh cluster or host command to copy the
+same file across all the cluster so that Hadoop is installed across all
+the nodes.
 
-This may be needed to be added to .bashrc of the master node
+
+In addition we need to assamble a customized `.bashrc` file that is than
+populated on all nodes. The add on to the .bashrc file includes:
+
 
 ```
 export JAVA_HOME=/usr/lib/jvm/java-11-openjdk-armhf
@@ -227,7 +151,11 @@ export PATH=$JAVA_HOME/bin:$HADOOP_HOME/bin:$HADOOP_HOME/sbin:$SPARK_HOME/bin:$P
 export HADOOP_HOME_WARN_SUPRESS=1
 ```
 
-#### Set JAVA_HOME
+## Install Java
+
+This section is incomplete and not properly documented while providing
+an easy to use a script. Instead we only provide some initial pointers on
+how to derive such a script.
 
 * To find Java path
 
@@ -251,7 +179,7 @@ After the above step change the permissions on the directory using:
 $ sudo chown pi:pi -R /opt/hadoop
 ```
 
-You can also verify if hadoop has been installed correctly by checking
+You can also verify if Hadoop has been installed correctly by checking
 the version
 
 ```
@@ -264,10 +192,18 @@ The output will be
 Hadoop 3.2.0
 ```
 
-#### HDFS
+## Install HDFS
 
-To get the Hadoop Distributed File System (HDFS) up and running, modify
-the following configuration files which are under
+This section does not provide a script to conduct the HDFS. Instead we
+provide some very initial pointers on how one could develop such a script while listing some of the steps. The templates provided here
+should be included in our cluster deployment form while using the
+python format statement to modify the parameters and write them to files
+that than can be used in the deployment.
+
+
+To get the Hadoop Distributed File System (HDFS) up and running one
+needs to modify the following configuration files which are under
+
 /opt/hadoop/etc/hadoop.
 
 1. Update core-site.xml file to set the NameNode location to Master on
@@ -282,9 +218,8 @@ the following configuration files which are under
 </configuration>
 ```
 
-2. To set path for HFDS, edit hdfs-site.xml. dfs.replication, indicates
-   how many times data is replicated in the cluster. Set 4 to have all the
-   data duplicated four nodes. Don’t enter a value higher than the actual
+2. To set the path for HFDS, change the hdfs-site.xml. dfs.replication, indicates
+   how many times data is replicated in the cluster. Set 4 to have all the data duplicated four nodes. Don’t enter a value higher than the actual
    number of worker nodes.
 
 ```
@@ -368,48 +303,41 @@ the following configuration files which are under
 </configuration>
 ```
 
-#### To copy the files in /opt/hadoop to all Pis
+These files need to be placed in  `/opt/hadoop`
 
-Add the following function to the .bashrc file of the master node
+with a command you start from cloudmesh using rsync
 
-```bash
-function copyconfig {
-for pi in $(otherpis); do rsync -avxP $HADOOP_HOME $pi:/opt; done
-}
-```
+```bash rsync -avxP $HADOOP_HOME $pi:/opt; done } ``` 
 
-On the master node, run ``` source ~/.bashrc && copyconfig ``` which copies Hadoop files from the master Pi node to all other Pis in the cluster.
+Once this is
+achieved you need to format HDFS with (here the documentation is unclear
+as it is not stated if it is done on all or just the master node).
 
-#### Format HDFS
 
 ```bash
 $ hdfs namenode -format -force
 ```
 
-#### Boot HDFS
-
-* Start HDFS by running the following script from master node:
+Next, you Start HDFS and yarn by running the following script from the master
+node:
 
 ```bash
 $ start dfs.sh
-```
-
-* Start YARN with the following script from master node:
-
-```bash
 $ start yarn.sh
 ```
 
-#### Test HDFS
+## Test HDFS
 
-Check HDFS is working by creating a temporary directory
+Check HDFS is working by creating a temporary directory.
 
 ```bash
 $ hadoop fs -mkdir /tmp
 $ hadoop fs -ls /
 $ jps
 ```
-#### Spark installation
+## Spark installation
+
+The spark installation is very similar to the Hadoop installation
 
 ```bash
 $ wget "https://archive.apache.org/dist/spark/spark-2.4.3/spark-2.4.3-bin-hadoop2.7.tgz"
@@ -417,10 +345,7 @@ $ tar -xzf spark-2.4.3-bin-hadoop2.7.tgz
 $ sudo mv ~/spark-2.4.3-bin-hadoop2.7 /opt/spark
 ```
 
-We can use clustercp function to copy the same file across all the
-cluster so that hadoop is installed across all the nodes
-
-After the above step change the permissions on the directory using:
+WOn each node (unclear from previous description) you need
 
 ```bash
 $ sudo chown pi:pi -R /opt/spark
@@ -433,7 +358,8 @@ export HADOOP_CONF_DIR=$HADOOP_HOME/etc/hadoop
 export LD_LIBRARY_PATH=$HADOOP_HOME/lib/native:$LD_LIBRARY_PATH
 ```
 
-Create the Spark configuration file and add the following lines at the end of the config file:
+Create the Spark configuration file and add the following lines at the
+end of the config file:
 
 ```
 $ cd $SPARK_HOME/conf
@@ -448,7 +374,7 @@ spark.executor.memory   465m
 spark.executor.cores    4
 ```
 
-You can also verify if hadoop has been installed correctly by checking
+You can  verify if Spark has been installed correctly by checking
 the version
 
 ```bash
@@ -456,7 +382,7 @@ $ cd && spark version | grep spark
 
 ```
 
-The output will be as follows
+The output will be as follows.
 
 ```
 ... version 2.4.3 ... Using Scala version 2.11.12 ...
@@ -496,18 +422,36 @@ scala>:q
 ```
 ## Benchmarks
 
-The benchmarks for our project was to record the time it takes normally to burn a single SD card and do all the setup part versus the time it takes to burn one SD card using cm-burn automatically with Static IP and hostname set to it. Any cm-pi-burn help commands can be used with a -v flag along with to display the results along with the timings. For eg  cm-pi-burn [-v] create [--image=IMAGE] [--device=DEVICE][--hostname=HOSTNAME][--ipaddr=IP][--sshkey=KEY][--blocksize=BLOCKSIZE][--dryrun] will display the results along with the time it takes to burn an image along with Ip address and hostname set along with it.
+This project lacks the proper report of benchmarks. We also believe the
+benchmark is not properly reported as it does not measure the time to
+add the information by hand.
+
+The benchmarks for our project was to record the time it normally takes
+to burn a single SD card and do all the setup part versus the time it
+takes to burn one SD card using cm-burn automatically with Static IP and
+hostname set to it. Any cm-pi-burn help commands can be used with a -v
+flag along with to display the results along with the timings. For eg 
+
+cm-pi-burn [-v] create [--image=IMAGE]
+[--device=DEVICE][--hostname=HOSTNAME][--ipaddr=IP][--sshkey=KEY][--blocksize=BLOCKSIZE][--dryrun]
+
+will display the results along with the time it takes to burn an image
+along with Ip address and hostname set along with it.
  
 The results can be summarised as follows:
 
-Manual: 8-9 minutes to burn one SD card and set up a static IP and hostname to it
+Manual burn: 8-9 minutes to burn one SD card and set up a static IP and
+hostname to it
+
 cm-pi-burn : 420 seconds(6 minutes) to burn 2 SD cards
 
 cm-pi-burn turns out to be very much efficient as compared to the Naive approach
 
 ## Acknowledgements
 
-We would like to thank Professor Gregor von Laszewski for his helpful contributions throughout the project in coding, as well as suggestions on how to do better. I would also like to thank Mr. Niranda Perera, for helping me with the project whenever I had issues.
+The previous report did not make it clear that the Spark and Hadoop
+setup have not been tested. This has been corrected, and the incomplete
+nature of this work has now been correctly reported so that others can pick up this project and complete it.
 
 ## References
 
