@@ -1,12 +1,21 @@
 # Hadoop Clusters With Raspberry Pi
 
-*Disclaimer: The writeup provided here only includes some theoretical notes. They were not implemented on a raspberry py. Furthermore, this project and the analysis of the scripts do not leverage Cloudmesh, which makes the task for interacting with a cluster much easier. We keep this section as it could provide useful for future students searching for a project. This project is incomplete. Furthermore, Gregor von Laszewski and Sub have significantly contributed to the implementation of the pi burn code. The report has been significantly updated by Gregor von Laszewski to provide guidance for others on how to proceed.*
+*Disclaimer: The writeup provided here only includes some theoretical
+notes. They were not implemented on a Raspberry Pi. Furthermore, this
+project and the analysis of the scripts do not leverage Cloudmesh,
+which makes the task for interacting with a cluster much easier. We
+keep this section as it could provide some useful information for
+future students searching for a project. 
 
-*Gregor von Laszewski
+Furthermore, Gregor von Laszewski and Sub have significantly
+contributed to the implementation of the pi burn code. The report has
+been significantly updated by Gregor von Laszewski to provide guidance
+for others on how to proceed.*
+
+* Gregor von Laszewski
 * Daivik Uggehalli Dayanand, [fa19-516-158](https://github.com/cloudmesh-community/fa19-516-158)
 * Akshay Kowshik, [fa19-516-150](https://github.com/cloudmesh-community/fa19-516-150)
 * Insights: <https://github.com/cloudmesh-community/fa19-516-158/graphs/contributors>
-
 * Project Directory (not operational): <https://github.com/cloudmesh-community/fa19-516-158/tree/master/project> 
 * Code: <https://github.com/cloudmesh/cm-burn/blob/master/cmburn/> 
 * Host: <https://github.com/cloudmesh/cloudmesh-inventory/tree/master/cloudmesh/host> (developed by Gregor von Laszewski)
@@ -39,19 +48,20 @@ control the workers.
 The deployment of Hadoop on Raspberry Pi Clusters involves the
 preparation of the cluster. This includes
 
-* Using CM-BURN command to burn multiple SD cards at once
-* Creating a cluster with as many nodes as we have SD cards for
+* Using `cm-pi-burn` command to burn multiple SD cards at once
+* (incomplete) Creating a cluster with as many nodes as we have SD cards for
 
 Once we have a cluster, a master node maintains knowledge about the
 distributed file system and schedules resource allocation. It hosts two
-daemons:
+daemons (:o2: this is unclear, from where are these deomons comming.):
 
-1. The NameNode manages the distributed file system and knows where
+1. :o2: The NameNode manages the distributed file system and knows where
    stored data blocks inside the cluster are.
-2. The ResourceManager manages the YARN jobs and takes care of
+2. :o2: The ResourceManager manages the YARN jobs and takes care of
    scheduling and executing processes on worker nodes.
 
-The worker nodes store the actual data and provide processing power to run  the jobs and host two daemons:
+The worker nodes store the actual data and provide processing power to
+run  the jobs and host two daemons:
 
 1. The DataNode manages the physical data stored on the node; it is
    named, NameNode.
@@ -59,7 +69,7 @@ The worker nodes store the actual data and provide processing power to run  the 
 
 ## Technologies used
 
-To achieve this, it is beneficial to use the following technologies
+To achieve this, we use the following technologies
 
 * cloudmesh common
 * cloudmesh-inventory
@@ -72,13 +82,17 @@ To achieve this, it is beneficial to use the following technologies
 
 ## Implementation
 
-The implementation consists of the following steps:
+:o2: AN introduction is missing that deliniates the burn from the
+deployment process.
+
+(:o2: the implementation is not completed) The implementation consists
+of the following steps:
 
 1. Buring the Raspian image on the SD card
 2. Setting Static IP address on the SD card
 3. Setting HostNames on the SD card
 
-Due to the use of cm-pi-burn, the cluster the SD Cards come preinstalled
+Due to the use of `cm-pi-burn`, the cluster SD Cards come preinstalled
 with hostnames, IP addresses, user key, and ssh enabled, so accessing
 each pi is easy and possible immediately after the boot. See the
 [cm-pi-burn](<https://github.com/cloudmesh/cloudmesh_pi_burn/blob/master/cm-pi-burn.md>)
@@ -102,7 +116,7 @@ deployment that this project was supposed to implement was not
 completed.
 
 
-The remaining steps include
+The remaining steps include (:o2: spark is not mentioned)
 
 4. creating passwordless keys and distributing it to all hosts 
 5. Downloading Hadoop on the master node 
@@ -126,7 +140,7 @@ constitute a one-line implementation.
 ## Hadoop installation
 
 In this section, we discuss theoretically how to installing Hadoop 3.2.0
-into a directory called /opt/hadoop. However, we have not tried this.
+into a directory called `/opt/hadoop`. However, we have not tried this.
 
 ```
 wget "https://archive.apache.org/dist/hadoop/common/hadoop-3.2.0/hadoop-3.2.0.tar.gz"
@@ -153,7 +167,7 @@ export HADOOP_HOME_WARN_SUPRESS=1
 
 ## Install Java
 
-This section is incomplete and not properly documented while providing
+:o2: This section is incomplete and not properly documented while providing
 an easy to use a script. Instead we only provide some initial pointers on
 how to derive such a script.
 
@@ -194,11 +208,12 @@ Hadoop 3.2.0
 
 ## Install HDFS
 
-This section does not provide a script to conduct the HDFS. Instead we
-provide some very initial pointers on how one could develop such a script while listing some of the steps. The templates provided here
-should be included in our cluster deployment form while using the
-python format statement to modify the parameters and write them to files
-that than can be used in the deployment.
+:o2: This section does not provide a script to conduct the HDFS. Instead
+we provide some very initial pointers on how one could develop such a
+script while listing some of the steps. The templates provided here
+should be included in our cluster deployment form while using the python
+format statement to modify the parameters and write them to files that
+than can be used in the deployment.
 
 
 To get the Hadoop Distributed File System (HDFS) up and running one
@@ -307,6 +322,8 @@ These files need to be placed in  `/opt/hadoop`
 
 with a command you start from cloudmesh using rsync
 
+:o2: this needs to be done with cloudmesh
+
 ```bash rsync -avxP $HADOOP_HOME $pi:/opt; done } ``` 
 
 Once this is
@@ -345,7 +362,7 @@ $ tar -xzf spark-2.4.3-bin-hadoop2.7.tgz
 $ sudo mv ~/spark-2.4.3-bin-hadoop2.7 /opt/spark
 ```
 
-WOn each node (unclear from previous description) you need
+On each node (unclear from previous description) you need
 
 ```bash
 $ sudo chown pi:pi -R /opt/spark
@@ -432,13 +449,26 @@ takes to burn one SD card using cm-burn automatically with Static IP and
 hostname set to it. Any cm-pi-burn help commands can be used with a -v
 flag along with to display the results along with the timings. For eg 
 
-cm-pi-burn [-v] create [--image=IMAGE]
-[--device=DEVICE][--hostname=HOSTNAME][--ipaddr=IP][--sshkey=KEY][--blocksize=BLOCKSIZE][--dryrun]
+```
+cm-pi-burn [-v] create [--image=IMAGE] \
+           [--device=DEVICE] \
+           [--hostname=HOSTNAME] \
+           [--ipaddr=IP] \
+           [--sshkey=KEY] \
+           [--blocksize=BLOCKSIZE] \
+           [--dryrun]
+```           
 
 will display the results along with the time it takes to burn an image
 along with Ip address and hostname set along with it.
  
 The results can be summarised as follows:
+
+:o2: We do not believe these benchmark numbers as it will take much more
+time to set up the information by hand. the first time.
+
+:o2: THe benchmark is done with the assumption that an expert sets it up,
+however cm-pi-burn needs no expert.
 
 Manual burn: 8-9 minutes to burn one SD card and set up a static IP and
 hostname to it
