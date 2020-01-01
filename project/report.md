@@ -485,6 +485,8 @@ nature of this work has now been correctly reported so that others can pick up t
 
 ## References
 
+:o2: refernces should be done in bibtex
+
 * <https://raspberrytips.com/install-raspbian-raspberry-pi/>
 * <https://raspberrytips.com/raspberry-pi-cluster/>
 * <https://www.raspberrypi.org/documentation/remote-access/ip-address.md>
