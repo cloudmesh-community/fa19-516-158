@@ -1,5 +1,7 @@
 # Hadoop Clusters With Raspberry Pi
 
+:o2: this project does not work
+
 *Disclaimer: The writeup provided here only includes some theoretical
 notes. They were not implemented on a Raspberry Pi. Furthermore, this
 project and the analysis of the scripts do not leverage Cloudmesh,
